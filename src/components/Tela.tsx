@@ -79,8 +79,8 @@ function Conteudo({ estado, config, onEscolher }: Props) {
 }
 
 function PerguntaNaTela({ pergunta, estado, config, onEscolher }: Props & { pergunta: Pergunta }) {
-  const ref = useAjustarTexto()
   const marcada = estado.escolhida !== null
+  const ref = useAjustarTexto(`${marcada}-${estado.mostrarCorreta}`)
   const certo = acertou(estado)
 
   return (
@@ -107,8 +107,7 @@ function PerguntaNaTela({ pergunta, estado, config, onEscolher }: Props & { perg
             >
               <span className="opcao-letra">{LETRAS[posicao]}</span>
               <span className="opcao-texto">{pergunta.opcoes[indice]}</span>
-              {estadoOpcao.startsWith('certa') && <span className="opcao-icone">✔</span>}
-              {estadoOpcao === 'errada' && <span className="opcao-icone">✖</span>}
+              <span className="opcao-icone">{estadoOpcao.startsWith('certa') ? '✔' : estadoOpcao === 'errada' ? '✖' : ''}</span>
             </li>
           )
         })}
@@ -137,7 +136,7 @@ function PerguntaNaTela({ pergunta, estado, config, onEscolher }: Props & { perg
  * da referência caberem na tela. Recalcula quando a tela muda de tamanho.
  * Como as opções ocultas já ocupam espaço, o tamanho fica fixo durante a pergunta.
  */
-function useAjustarTexto() {
+function useAjustarTexto(chave: string) {
   const ref = useRef<HTMLDivElement>(null)
   useLayoutEffect(() => {
     const el = ref.current
@@ -154,6 +153,6 @@ function useAjustarTexto() {
     const observador = new ResizeObserver(ajustar)
     observador.observe(el.parentElement!)
     return () => observador.disconnect()
-  }, [])
+  }, [chave])
   return ref
 }

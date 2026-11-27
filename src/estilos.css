@@ -220,6 +220,8 @@ kbd {
 }
 .opcao-icone {
   flex: none;
+  width: 1.2em;
+  text-align: center;
   font-size: 1.3em;
   font-weight: 800;
 }
@@ -251,7 +253,7 @@ kbd {
 
 .tela-rodape {
   flex: none;
-  height: 9cqh;
+  height: 11cqh;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -260,8 +262,8 @@ kbd {
   display: flex;
   align-items: center;
   gap: 1em;
-  font-size: min(4cqh, 2.4cqw);
-  padding: 0.45em 1.2em;
+  font-size: min(3.6cqh, 2.2cqw);
+  padding: 0.4em 1.2em;
   border-radius: 999px;
   animation: surgir 0.5s ease-out 0.3s both;
 }
