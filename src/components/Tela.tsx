@@ -1,10 +1,9 @@
-import { useLayoutEffect, useRef } from 'react'
+import { useLayoutEffect, useRef, type ReactNode } from 'react'
 import { acertou, buscarPergunta } from '../jogo'
 import type { Config, EstadoJogo, Pergunta } from '../tipos'
+import { Chama, IGREJA, Logo } from './Logo'
 
 export const LETRAS = ['A', 'B', 'C', 'D', 'E', 'F']
-const TITULO = 'Gincana Peniel'
-const SUBTITULO = 'Perguntas Bíblicas'
 
 interface Props {
   estado: EstadoJogo
@@ -15,17 +14,21 @@ interface Props {
 
 /** Tela exibida para o público. Usa unidades de container, então funciona em qualquer tamanho. */
 export function Tela({ estado, config, onEscolher }: Props) {
+  const emPergunta = estado.fase === 'pergunta'
   return (
     <div className="tela">
-      <div className="tela-fundo" />
-      <header className="tela-topo">
-        <span className="tela-marca">📖 {TITULO}</span>
-        {estado.fase === 'pergunta' && (
+      <Fundo />
+      {emPergunta && (
+        <header className="tela-topo">
+          <div className="tela-marca">
+            <Chama />
+            <Logo compacto />
+          </div>
           <span className="tela-contagem">
             Rodada {estado.rodada} · Pergunta {estado.contador}
           </span>
-        )}
-      </header>
+        </header>
+      )}
       <main className="tela-corpo">
         <Conteudo estado={estado} config={config} onEscolher={onEscolher} />
       </main>
@@ -33,35 +36,56 @@ export function Tela({ estado, config, onEscolher }: Props) {
   )
 }
 
+/** Fundo pêssego com manchas terracota e recortes texturizados, como no cartaz. */
+function Fundo() {
+  return (
+    <div className="tela-fundo" aria-hidden="true">
+      <div className="fundo-marca-dagua">FAMÍLIA</div>
+      <div className="fundo-mancha m1" />
+      <div className="fundo-mancha m2" />
+      <div className="fundo-mancha m3" />
+      <div className="fundo-recorte r1" />
+      <div className="fundo-recorte r2" />
+      <div className="fundo-pontos" />
+    </div>
+  )
+}
+
+function Aviso({ chamada, children }: { chamada: string; children?: ReactNode }) {
+  return (
+    <div className="tela-aviso">
+      <Chama className="aviso-chama" />
+      <div className="aviso-chamada">{chamada}</div>
+      <Logo className="aviso-logo" />
+      {children}
+      <div className="aviso-igreja">{IGREJA}</div>
+    </div>
+  )
+}
+
 function Conteudo({ estado, config, onEscolher }: Props) {
   if (estado.fase === 'inicio') {
     return (
-      <div className="tela-aviso">
-        <div className="aviso-icone">📖</div>
-        <h1>{TITULO}</h1>
-        <p>{estado.rodada > 1 ? `Rodada ${estado.rodada}` : SUBTITULO}</p>
-      </div>
+      <Aviso chamada="Gincana Bíblica">
+        <div className="aviso-faixa">{estado.rodada > 1 ? `Rodada ${estado.rodada}` : 'Perguntas e Respostas'}</div>
+      </Aviso>
     )
   }
   if (estado.fase === 'fimRodada') {
+    const n = estado.adiadas.length
     return (
-      <div className="tela-aviso">
-        <div className="aviso-icone">⏳</div>
-        <h1>Fim da rodada {estado.rodada}</h1>
-        <p>
-          {estado.adiadas.length} {estado.adiadas.length === 1 ? 'pergunta volta' : 'perguntas voltam'} na
-          próxima rodada
-        </p>
-      </div>
+      <Aviso chamada={`Fim da rodada ${estado.rodada}`}>
+        <div className="aviso-faixa">
+          {n} {n === 1 ? 'pergunta volta' : 'perguntas voltam'} na próxima rodada
+        </div>
+      </Aviso>
     )
   }
   if (estado.fase === 'fim') {
     return (
-      <div className="tela-aviso">
-        <div className="aviso-icone">🏆</div>
-        <h1>Fim das perguntas!</h1>
-        <p>Obrigado a todos pela participação</p>
-      </div>
+      <Aviso chamada="Fim das perguntas!">
+        <div className="aviso-faixa">Obrigado a todos pela participação</div>
+      </Aviso>
     )
   }
 
@@ -107,7 +131,9 @@ function PerguntaNaTela({ pergunta, estado, config, onEscolher }: Props & { perg
             >
               <span className="opcao-letra">{LETRAS[posicao]}</span>
               <span className="opcao-texto">{pergunta.opcoes[indice]}</span>
-              <span className="opcao-icone">{estadoOpcao.startsWith('certa') ? '✔' : estadoOpcao === 'errada' ? '✖' : ''}</span>
+              <span className="opcao-icone">
+                {estadoOpcao.startsWith('certa') ? '✔' : estadoOpcao === 'errada' ? '✖' : ''}
+              </span>
             </li>
           )
         })}
@@ -150,6 +176,7 @@ function useAjustarTexto(chave: string) {
       }
     }
     ajustar()
+    void document.fonts.ready.then(ajustar) // as fontes mudam a largura do texto
     const observador = new ResizeObserver(ajustar)
     observador.observe(el.parentElement!)
     return () => observador.disconnect()

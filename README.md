@@ -1,4 +1,4 @@
-# Gincana Peniel: Quiz Bíblico
+# Gincana Bíblica: 2ª Conferência da Família (AD Peniel)
 
 Sistema de perguntas e respostas para projetar no telão. Não tem login nem banco de dados: as perguntas ficam em `src/data/perguntas.json` e as configurações ficam salvas no próprio navegador.
 
@@ -29,6 +29,9 @@ O progresso fica salvo no navegador. Se a página fechar ou recarregar, o jogo c
 - **Quando errar:** mostrar a certa com a referência, ou não mostrar e devolver a pergunta para a próxima rodada.
 - **Embaralhar a ordem das opções:** vem ligado, porque no PDF a resposta certa é a letra B em 75 das 120 perguntas.
 - **Sons:** liga/desliga, volume e botões de teste.
+
+## Identidade visual
+Segue o cartaz do evento: fundo pêssego, terracota e grafite, e a logo "II Conferência Da Família" com a chama, recriada em vetor (`src/components/Logo.tsx`). As fontes vão junto com o site, então não dependem de internet: Antonio (título), Corinthia ("Da Família") e Montserrat (textos). Os textos do evento ficam em `src/components/Logo.tsx` e as cores no início de `src/estilos.css`.
 
 ## Sons personalizados
 Por padrão os sons são gerados pelo próprio navegador. Para usar seus próprios sons, coloque arquivos mp3 em `public/sons/` com estes nomes:

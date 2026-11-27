@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { abrirCanal, carregarConfig, carregarEstado } from './armazenamento'
+import { NOME_EVENTO } from './components/Logo'
 import { Tela } from './components/Tela'
 import { estadoInicial } from './jogo'
 import type { Config, EstadoJogo } from './tipos'
@@ -13,7 +14,7 @@ export function Telao() {
   const inativo = useInativo(2500)
 
   useEffect(() => {
-    document.title = 'Telão · Gincana Peniel'
+    document.title = `Telão · ${NOME_EVENTO}`
     const canal = abrirCanal((m) => {
       if (m.tipo === 'estado') {
         setEstado(m.estado)

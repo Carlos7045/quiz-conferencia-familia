@@ -7,6 +7,7 @@ import {
   salvarEstado,
 } from './armazenamento'
 import { Configuracoes } from './components/Configuracoes'
+import { Chama, Logo, NOME_EVENTO } from './components/Logo'
 import { LETRAS, Tela } from './components/Tela'
 import {
   PERGUNTAS,
@@ -211,7 +212,11 @@ export function Controle() {
   return (
     <div className="painel">
       <header className="painel-topo">
-        <h1>📖 Gincana Peniel · Controle</h1>
+        <div className="painel-marca" title={NOME_EVENTO}>
+          <Chama />
+          <Logo compacto />
+          <span className="painel-marca-texto">Controle da gincana</span>
+        </div>
         <div className="painel-topo-acoes">
           <span className={`status ${telaoConectado ? 'ligado' : ''}`}>
             {telaoConectado ? '● Telão conectado' : '○ Telão não aberto'}
