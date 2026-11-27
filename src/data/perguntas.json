@@ -1,0 +1,1442 @@
+[
+  {
+    "id": 1,
+    "pergunta": "Qual rei da Babilônia sitiou Jerusalém e levou parte dos utensílios da Casa de Deus e alguns dos pranteados israelitas no terceiro ano do reinado de Jeoaquim?",
+    "opcoes": [
+      "Belsazar",
+      "Nabucodonosor",
+      "Ciro",
+      "Dario"
+    ],
+    "correta": 1,
+    "referencia": "Daniel 1:1-2"
+  },
+  {
+    "id": 2,
+    "pergunta": "Como se chamava o chefe dos eunucos a quem o rei ordenou que trouxesse alguns dos filhos de Israel, da linhagem real e dos nobres?",
+    "opcoes": [
+      "Arioque",
+      "Hananias",
+      "Aspenaz",
+      "Misael"
+    ],
+    "correta": 2,
+    "referencia": "Daniel 1:3"
+  },
+  {
+    "id": 3,
+    "pergunta": "Qual era o propósito principal de ensinar aos jovens hebreus a literatura e a língua dos caldeus?",
+    "opcoes": [
+      "Para que pudessem liderar revoltas contra o império babilônico.",
+      "Para que servissem no palácio do rei após três anos de treinamento.",
+      "Para que se tornassem escribas reais encarregados de traduzir textos sagrados.",
+      "Para que pudessem escrever um novo código de leis para a Babilônia."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 1:4-5"
+  },
+  {
+    "id": 4,
+    "pergunta": "Quais foram os nomes babilônicos dados a Daniel, Hananias, Misael e Azarias, respectivamente?",
+    "opcoes": [
+      "Beltsasar, Sadraque, Mesaque e Abede-Nego",
+      "Baltasar, Beltesazar, Abede-Nego e Mesaque",
+      "Beltesazar, Sadraque, Mesaque e Abede-Nego",
+      "Sadraque, Mesaque, Abede-Nego e Beltesazar"
+    ],
+    "correta": 2,
+    "referencia": "Daniel 1:6-7"
+  },
+  {
+    "id": 5,
+    "pergunta": "Por que Daniel propôs em seu coração não se contaminar com a porção das iguarias do rei e com o vinho que ele bebia?",
+    "opcoes": [
+      "Porque ele fazia restrições alimentares médicas devido a uma alergia.",
+      "Para evitar quebrar as leis alimentares e rituais da Torá impostas aos judeus.",
+      "Porque a comida da Babilônia era considerada de baixa qualidade nutricional.",
+      "Porque ele havia feito um voto temporário de jejum absoluto."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 1:8"
+  },
+  {
+    "id": 6,
+    "pergunta": "A quem o chefe dos eunucos entregou a responsabilidade direta sobre Daniel, Hananias, Misael e Azarias?",
+    "opcoes": [
+      "Arioque, o capitão da guarda",
+      "Ao despenseiro",
+      "Ao sumo sacerdote dos caldeus",
+      "Ao copeiro-mor do rei"
+    ],
+    "correta": 1,
+    "referencia": "Daniel 1:11"
+  },
+  {
+    "id": 7,
+    "pergunta": "Qual foi o teste que Daniel propôs ao despenseiro durante um período de dez dias?",
+    "opcoes": [
+      "Comer apenas carne e beber água, recusando os doces.",
+      "Comer apenas legumes e beber água, evitando a comida e o vinho do rei.",
+      "Jejuar completamente durante o dia e comer apenas frutas à noite.",
+      "Consumir apenas o azeite e o pão trazidos de Israel."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 1:12"
+  },
+  {
+    "id": 8,
+    "pergunta": "Qual foi o resultado físico observado após os dez dias do teste proposto por Daniel?",
+    "opcoes": [
+      "Os quatro jovens ficaram visivelmente mais magros e fracos que os outros.",
+      "Eles apresentavam um semblante mais formoso e gordo de carne do que todos os jovens que comiam das iguarias do rei.",
+      "Eles adoeceram com febre devido à falta de nutrientes.",
+      "Não houve nenhuma diferença perceptível em relação aos demais."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 1:15"
+  },
+  {
+    "id": 9,
+    "pergunta": "O que Deus concedeu aos quatro jovens em reconhecimento ao conhecimento e à inteligência que demonstraram na literatura e na sabedoria?",
+    "opcoes": [
+      "Riquezas materiais e terras na província da Babilônia.",
+      "A capacidade de compreender todas as visões e sonhos.",
+      "A posição imediata de governadores de províncias.",
+      "Imunidade contra as leis do reino persa."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 1:17"
+  },
+  {
+    "id": 10,
+    "pergunta": "Quando o rei Nabucodonosor os examinou no fim do período determinado, como ele avaliou os quatro jovens hebreus em comparação com todos os magos e astrólogos do reino?",
+    "opcoes": [
+      "Eles eram dez vezes mais doutos do que todos os magos e astrólogos de todo o seu reino.",
+      "Eles eram equivalentes em sabedoria aos sábios mais velhos da corte.",
+      "Eles demonstraram pouca habilidade nas ciências, mas superavam os outros em coragem.",
+      "Eles foram reprovados por não dominarem os rituais babilônicos."
+    ],
+    "correta": 0,
+    "referencia": "Daniel 1:20"
+  },
+  {
+    "id": 11,
+    "pergunta": "No segundo ano do reinado de Nabucodonosor, qual foi o motivo de o rei ficar tão perturbado a ponto de o seu sono lhe fugir?",
+    "opcoes": [
+      "Ele teve um sonho assustador e exigiu que os sábios revelassem tanto o sonho quanto a sua interpretação.",
+      "Ele descobriu uma conspiração de assassinato liderada por seus próprios príncipes.",
+      "Ele recebeu a notícia de que um exército inimigo estava invadindo as fronteiras da Babilônia.",
+      "Ele perdeu o controle de uma província importante no ocidente."
+    ],
+    "correta": 0,
+    "referencia": "Daniel 2:1-3"
+  },
+  {
+    "id": 12,
+    "pergunta": "O que o rei Nabucodonosor ameaçou fazer com os magos, astrólogos, caldeus e feiticeiros caso eles não lhe revelassem o sonho e a sua interpretação?",
+    "opcoes": [
+      "Seriam desterrados para as terras distantes de Judá.",
+      "Seriam cortados em pedaços e as suas casas transformadas em monturos.",
+      "Seriam rebaixados a escravos nas cozinhas do palácio.",
+      "Perderiam todos os seus bens e títulos de nobreza."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 2:5"
+  },
+  {
+    "id": 13,
+    "pergunta": "Quem era o capitão da guarda do rei que foi encarregado de executar os sábios da Babilônia e a quem Daniel se dirigiu com prudência?",
+    "opcoes": [
+      "Aspenaz",
+      "Belsazar",
+      "Arioque",
+      "Melzar"
+    ],
+    "correta": 2,
+    "referencia": "Daniel 2:14-15"
+  },
+  {
+    "id": 14,
+    "pergunta": "A quem Daniel recorreu para que buscassem misericórdia do Deus do céu a respeito daquele segredo, evitando que fossem mortos com o resto dos sábios?",
+    "opcoes": [
+      "Aos sacerdotes dos deuses babilônicos",
+      "Aos conselheiros particulares do rei",
+      "A Hananias, Misael e Azarias (seus companheiros)",
+      "Aos anciãos exilados de Jerusalém"
+    ],
+    "correta": 2,
+    "referencia": "Daniel 2:17-18"
+  },
+  {
+    "id": 15,
+    "pergunta": "De que forma o mistério do sonho do rei foi revelado a Daniel?",
+    "opcoes": [
+      "Através de um pergaminho antigo encontrado nos arquivos reais.",
+      "Por meio de uma visão noturna de Deus.",
+      "Através de uma revelação dada diretamente a um astrólogo babilônico arrependido.",
+      "Por meio da análise das estrelas e dos movimentos planetários."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 2:19"
+  },
+  {
+    "id": 16,
+    "pergunta": "No grande sonho de Nabucodonosor, a estátua vista pelo rei era composta por diferentes materiais. Qual metal representava a cabeça da estátua?",
+    "opcoes": [
+      "Prata",
+      "Ouro fino",
+      "Bronze",
+      "Ferro"
+    ],
+    "correta": 1,
+    "referencia": "Daniel 2:32"
+  },
+  {
+    "id": 17,
+    "pergunta": "O que representava a pedra que foi cortada sem auxílio de mãos, que feriu a estátua nos seus pés de ferro e barro, e que depois se tornou uma grande montanha que encheu toda a terra?",
+    "opcoes": [
+      "Um império militar terreno que conquistaria a Babilônia em pouco tempo.",
+      "A aliança entre os reinos da Pérsia e da Grécia.",
+      "O reino eterno estabelecido pelo Deus do céu, que jamais será destruído.",
+      "O renascimento do poderio dos descendentes de Davi em Jerusalém."
+    ],
+    "correta": 2,
+    "referencia": "Daniel 2:34-35 e 2:44"
+  },
+  {
+    "id": 18,
+    "pergunta": "Como o rei Nabucodonosor reagiu imediatamente após Daniel revelar e interpretar o seu sonho?",
+    "opcoes": [
+      "Mandou prender Daniel por bruxaria e feitiçaria.",
+      "Prostrou-se com o rosto em terra, prestou adoração a Daniel e reconheceu que o Deus dele é o Deus dos deuses.",
+      "Desafiou Daniel a provar que aquela interpretação não era mera coincidência.",
+      "Ficou furioso e ordenou a execução imediata de todos os seus ministros."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 2:46-47"
+  },
+  {
+    "id": 19,
+    "pergunta": "Qual foi o cargo elevado que Daniel recebeu de Nabucodonosor após interpretar o sonho?",
+    "opcoes": [
+      "Governador de toda a província da Babilônia e principal superintendente de todos os sábios.",
+      "General supremo dos exércitos reais da Caldéia.",
+      "Sumo sacerdote de todos os templos do império.",
+      "Tesoureiro-mor da coroa babilônica."
+    ],
+    "correta": 0,
+    "referencia": "Daniel 2:48"
+  },
+  {
+    "id": 20,
+    "pergunta": "A pedido de Daniel, quem o rei Nabucodonosor colocou para administrar os negócios da província da Babilônia, enquanto o próprio Daniel permaneceu na corte do rei?",
+    "opcoes": [
+      "Arioque e Aspenaz",
+      "Sadraque, Mesaque e Abede-Nego (Hananias, Misael e Azarias)",
+      "Os principais sacerdotes dos caldeus",
+      "Os príncipes descendentes da nobreza babilônica"
+    ],
+    "correta": 1,
+    "referencia": "Daniel 2:49"
+  },
+  {
+    "id": 21,
+    "pergunta": "Quais eram as dimensões (altura e largura) da imagem de ouro que o rei Nabucodonosor mandou erguer na província da Babilônia?",
+    "opcoes": [
+      "Sessenta côvados de altura e seis côvados de largura",
+      "Cem côvados de altura e dez côvados de largura",
+      "Trinta côvados de altura e três côvados de largura",
+      "Cinquenta côvados de altura e cinco côvados de largura"
+    ],
+    "correta": 0,
+    "referencia": "Daniel 3:1"
+  },
+  {
+    "id": 22,
+    "pergunta": "Quem o rei Nabucodonosor convocou para a dedicação da estátua de ouro erguida na planície de Dura?",
+    "opcoes": [
+      "Apenas os príncipes e governadores da cidade de Babilônia",
+      "Os sátrapas, prefeitos, capitães, juizes, tesoureiros, conselheiros, magistrados e todos os governadores das províncias",
+      "Somente os astrólogos, magos e caldeus da corte real",
+      "Os líderes religiosos de todas as nações conquistadas pelo império persa"
+    ],
+    "correta": 1,
+    "referencia": "Daniel 3:2-3"
+  },
+  {
+    "id": 23,
+    "pergunta": "Qual era o sinal musical combinado que indicava o momento exato em que todos deviam se prostrar e adorar a imagem de ouro?",
+    "opcoes": [
+      "O toque solene das trombetas de prata do templo",
+      "O soar do som da buzina, da flauta, da harpa, da sambuca, do saltério, da gaita de foles e de toda sorte de música",
+      "O estrondo de grandes tambores de guerra imperiais",
+      "O toque uníssono de sinos de bronze instalados nos portões da cidade"
+    ],
+    "correta": 1,
+    "referencia": "Daniel 3:5 e 3:10"
+  },
+  {
+    "id": 24,
+    "pergunta": "Qual era a punição decretada por Nabucodonosor para quem não se prostrasse e não adorasse a imagem de ouro?",
+    "opcoes": [
+      "Seria desterrado imediatamente para as minas de cobre do deserto",
+      "Seria lançado instantaneamente dentro de uma fornalha de fogo ardente",
+      "Perderia todos os seus bens e seria transformado em escravo público",
+      "Seria decapitado em praça pública diante de toda a assembleia"
+    ],
+    "correta": 1,
+    "referencia": "Daniel 3:6"
+  },
+  {
+    "id": 25,
+    "pergunta": "Quais foram os oficiais caldeus que se apresentaram para acusar especificamente os judeus (Sadraque, Mesaque e Abede-Nego) de não servirem aos deuses do rei nem adorarem a estátua?",
+    "opcoes": [
+      "Os príncipes da guarda pessoal de Arioque",
+      "Determinados homens caldeus",
+      "Os sacerdotes do templo de Marduk",
+      "Os escribas particulares do palácio real"
+    ],
+    "correta": 1,
+    "referencia": "Daniel 3:8"
+  },
+  {
+    "id": 26,
+    "pergunta": "Qual foi a postura firme demonstrada por Sadraque, Mesaque e Abede-Nego quando o rei Nabucodonosor os confrontou e lhes deu uma nova oportunidade de adoração?",
+    "opcoes": [
+      "Eles pediram um prazo de três dias para consultar a Deus antes de dar uma resposta.",
+      "Eles disseram que o Deus a quem serviam os podia livrar da fornalha de fogo ardente, e que, mesmo se não os livrasse, não serviriam aos deuses do rei nem adorariam a estátua.",
+      "Eles se prostraram no chão por medo da execução e pediram perdão ao rei em segredo.",
+      "Eles tentaram argumentar que a lei de seu país proibia o uso de instrumentos musicais."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 3:16-18"
+  },
+  {
+    "id": 27,
+    "pergunta": "Como o rei Nabucodonosor reagiu à resposta corajosa dada pelos três jovens hebreus?",
+    "opcoes": [
+      "Ficou profundamente admirado com a coragem deles e os perdoou publicamente.",
+      "O seu semblante se mudou, ordenou que a fornalha fosse aquecida sete vezes mais do que costumava ser e mandou os homens mais fortes do seu exército amarrá-los.",
+      "Mandou chamá-los para uma reunião privada em seus aposentos para negociar um acordo de paz.",
+      "Ordenou que fossem expulsos imediatamente da província da Babilônia."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 3:19-20"
+  },
+  {
+    "id": 28,
+    "pergunta": "O que aconteceu com os homens fortes do exército de Nabucodonosor que levaram Sadraque, Mesaque e Abede-Nego até a boca da fornalha?",
+    "opcoes": [
+      "Eles foram promovidos a generais por cumprirem a ordem real com perfeição.",
+      "Eles foram mortos pela enorme chama de fogo devido ao calor excessivo da fornalha.",
+      "Eles se recusaram a executar a ordem e abandonaram o exército real.",
+      "Eles sofreram queimaduras leves, mas sobreviveram para contar a história."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 3:22"
+  },
+  {
+    "id": 29,
+    "pergunta": "Quando olhou para dentro da fornalha, quantos homens o rei Nabucodonosor viu andando soltos, ilesos e com a aparência semelhante à de um filho dos deuses?",
+    "opcoes": [
+      "Três homens",
+      "Quatro homens",
+      "Cinco homens",
+      "Apenas um anjo brilhante acompanhado pelos três jovens"
+    ],
+    "correta": 1,
+    "referencia": "Daniel 3:24-25"
+  },
+  {
+    "id": 30,
+    "pergunta": "Qual foi o decreto emitido por Nabucodonosor após o milagre do livramento dos três jovens hebreus na fornalha?",
+    "opcoes": [
+      "Que todo o império deveria adorar exclusivamente a estátua de ouro sob pena de morte.",
+      "Que nenhum povo, nação ou língua falasse blasfêmia contra o Deus de Sadraque, Mesaque e Abede-Nego, pois não há outro deus que possa livrar assim.",
+      "Que todos os judeus exilados fossem libertados e autorizados a retornar imediatamente para Jerusalém.",
+      "Que os oficiais caldeus que os acusaram fossem expulsos permanentemente da corte."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 3:28-29"
+  },
+  {
+    "id": 31,
+    "pergunta": "Como o rei Nabucodonosor iniciou o decreto registrado no capítulo 4, endereçado a todos os povos, nações e línguas que habitam em toda a terra?",
+    "opcoes": [
+      "Desafiando os reis vizinhos para uma nova guerra de conquista.",
+      "Anunciando e declarando os sinais e prodígios que o Deus Altíssimo fizera para com ele.",
+      "Decretando a construção de um novo templo em homenagem ao deus Marduk.",
+      "Exigindo que todos os súditos prestassem culto à sua própria imagem."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 4:1-3"
+  },
+  {
+    "id": 32,
+    "pergunta": "O que motivou Nabucodonosor a chamar todos os sábios da Babilônia novamente, conforme o relato do início do capítulo 4?",
+    "opcoes": [
+      "Ele estava entristecido e queria que os sábios interpretassem o seu segundo sonho perturbador.",
+      "Ele queria premiar os sábios por terem descoberto uma conspiração secreta.",
+      "Ele desejava consultar os astros para saber a data de uma nova expedição militar.",
+      "Ele queria testar a lealdade dos novos conselheiros estrangeiros."
+    ],
+    "correta": 0,
+    "referencia": "Daniel 4:4-7"
+  },
+  {
+    "id": 33,
+    "pergunta": "Por que, segundo o próprio relato do rei, os magos, astrólogos, caldeus e adivinhos não conseguiram decifrar o seu sonho desta vez?",
+    "opcoes": [
+      "Porque eles recusaram a ordem do rei por medo de represálias.",
+      "Porque o espírito dos deuses santos não estava neles.",
+      "Porque o rei havia esquecido os detalhes do sonho, assim como acontecera no capítulo 2.",
+      "Porque Daniel já havia tomado o lugar deles como chefe supremo da classe sacerdotal."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 4:8-9"
+  },
+  {
+    "id": 34,
+    "pergunta": "Qual era o nome babilônico de Daniel, pelo qual o rei o chamava e a quem ele recorreu para interpretar o sonho?",
+    "opcoes": [
+      "Arioque",
+      "Beltesazar",
+      "Sadraque",
+      "Abede-Nego"
+    ],
+    "correta": 1,
+    "referencia": "Daniel 4:8-9"
+  },
+  {
+    "id": 35,
+    "pergunta": "No sonho de Nabucodonosor, o que representava a grande árvore que cresceu até o céu, cujo fruto era abundante e que servia de abrigo para os animais e aves?",
+    "opcoes": [
+      "O próprio rei Nabucodonosor e a grandeza do seu império que se estendia até os confins da terra.",
+      "A sabedoria acumulada pelos magos da Babilônia ao longo de várias gerações.",
+      "O templo principal dedicado aos deuses da Caldéia.",
+      "A aliança eterna entre a Babilônia e os reinos do oriente."
+    ],
+    "correta": 0,
+    "referencia": "Daniel 4:20-22"
+  },
+  {
+    "id": 36,
+    "pergunta": "Quem desceu do céu no sonho e deu a ordem para que a árvore fosse cortada, os seus ramos podados, mas deixando o seu tronco preso com ferros e correias na relva do campo?",
+    "opcoes": [
+      "Um anjo destruidor com uma espada desembainhada",
+      "Um vigia, um santo que desceu do céu",
+      "O profeta Daniel em uma visão espiritual",
+      "Uma divindade babilônica enfurecida com a soberba do rei"
+    ],
+    "correta": 1,
+    "referencia": "Daniel 4:13 e 4:23"
+  },
+  {
+    "id": 37,
+    "pergunta": "Por quanto tempo o rei Nabucodonosor passaria vivendo como os animais do campo, comendo erva como os bois e sendo molhado pelo sereno do céu, até reconhecer que o Altíssimo domina sobre o reino dos homens?",
+    "opcoes": [
+      "Sete meses",
+      "Três anos e meio",
+      "Sete tempos",
+      "Doze meses completos"
+    ],
+    "correta": 2,
+    "referencia": "Daniel 4:25"
+  },
+  {
+    "id": 38,
+    "pergunta": "Qual conselho direto o profeta Daniel deu a Nabucodonosor logo após dar a interpretação do sonho, na tentativa de evitar ou atenuar o juízo divino?",
+    "opcoes": [
+      "Que ele abdicasse imediatamente do trono em favor de seu filho Belsazar.",
+      "Que ele pusesse fim aos seus pecados, fazendo justiça aos oprimidos e mostrando misericórdia para com os pobres.",
+      "Que ele doasse metade dos tesouros do palácio para os sacerdotes do templo.",
+      "Que ele construísse altares para o Deus dos céus em todas as províncias da Babilônia."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 4:27"
+  },
+  {
+    "id": 39,
+    "pergunta": "Quanto tempo depois do sonho a sentença divina se cumpriu sobre Nabucodonosor, enquanto ele passeava sobre o palácio real e vangloriava-se de sua grandiosa Babilônia?",
+    "opcoes": [
+      "Exatamente sete dias depois",
+      "No dia seguinte ao término da consulta",
+      "Doze meses depois",
+      "Três anos depois"
+    ],
+    "correta": 2,
+    "referencia": "Daniel 4:28-31"
+  },
+  {
+    "id": 40,
+    "pergunta": "O que aconteceu com o rei Nabucodonosor assim que o seu entendimento lhe voltou no fim daquele período de punição?",
+    "opcoes": [
+      "Ele fugiu para o deserto e nunca mais quis retornar ao palácio.",
+      "Ele bendisse o Altíssimo, louvou e honorificou Aquele que vive para sempre, cujo domínio é eterno.",
+      "Ele declarou guerra contra as nações vizinhas para recuperar o seu prestígio militar.",
+      "Ele ordenou a execução de todos os conselheiros que haviam duvidado de sua sanidade."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 4:34-37"
+  },
+  {
+    "id": 41,
+    "pergunta": "Que rei deu um grande banquete a mil dos seus senhores e bebeu vinho com eles, conforme o relato do início do capítulo 5?",
+    "opcoes": [
+      "Nabucodonosor",
+      "Belsazar",
+      "Dario, o medo",
+      "Ciro, o persa"
+    ],
+    "correta": 1,
+    "referencia": "Daniel 5:1"
+  },
+  {
+    "id": 42,
+    "pergunta": "O que o rei Belsazar ordenou que trouxessem durante a festa, para que ele, os seus príncipes, as suas mulheres e concubinas pudessem beber neles?",
+    "opcoes": [
+      "Os troféus de guerra conquistados no Egito",
+      "As taças de ouro maciço confeccionadas por seu avô",
+      "Os utensílios de ouro e de prata que Nabucodonosor, seu pai (ou antecessor), tinha tirado do templo de Jerusalém",
+      "As jarras cerimoniais usadas pelos sacerdortes de Babilônia"
+    ],
+    "correta": 2,
+    "referencia": "Daniel 5:2-3"
+  },
+  {
+    "id": 43,
+    "pergunta": "Enquanto bebiam vinho nos utensílios sagrados, a quem os participantes do banquete louvaram e adoraram?",
+    "opcoes": [
+      "Apenas ao Deus Altíssimo do céu",
+      "Aos deuses de ouro, de prata, de bronze, de ferro, de madeira e de pedra",
+      "Aos espíritos dos antigos reis da Babilônia",
+      "Ao sol, à lua e às estrelas do exército celeste"
+    ],
+    "correta": 1,
+    "referencia": "Daniel 5:4"
+  },
+  {
+    "id": 44,
+    "pergunta": "O que apareceu repentinamente e começou a escrever na parede caiada do palácio real, defronte do castiçal, assustando o rei Belsazar?",
+    "opcoes": [
+      "Uma mão de homem",
+      "Uma serpente de fogo",
+      "Uma espada flamejante",
+      "Uma pomba branca"
+    ],
+    "correta": 0,
+    "referencia": "Daniel 5:5"
+  },
+  {
+    "id": 45,
+    "pergunta": "Qual foi a reação física imediata do rei Belsazar ao ver a mão escrevendo na parede?",
+    "opcoes": [
+      "Ele desmaiou instantaneamente e foi levado para os seus aposentos.",
+      "O seu rosto mudou de cor, os seus pensamentos o perturbaram, os julgos dos seus lombos se soltaram e os seus joelhos batiam um contra o outro.",
+      "Ele sacou da sua espada e ordenou que seus guardas atacassem a parede.",
+      "Ele começou a rir nervosamente achando que era uma brincadeira dos seus conselheiros."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 5:6"
+  },
+  {
+    "id": 46,
+    "pergunta": "Que recompensa Belsazar prometeu a quem pudesse ler a escritura e declarar-lhe a sua interpretação?",
+    "opcoes": [
+      "Ser vestido de púrpura, ter uma cadeia de ouro ao pescoço e ser o terceiro governante no reino.",
+      "Receber metade do tesouro real e a mão de sua filha em casamento.",
+      "Ser nomeado comandante supremo de todos os exércitos da Babilônia.",
+      "Receber uma província inteira para governar de forma independente."
+    ],
+    "correta": 0,
+    "referencia": "Daniel 5:7"
+  },
+  {
+    "id": 47,
+    "pergunta": "Quem foi a pessoa na corte que lembrou ao rei sobre Daniel, descrevendo-o como alguém em quem havia o espírito dos deuses santos, luz, inteligência e sabedoria?",
+    "opcoes": [
+      "Arioque, o capitão da guarda",
+      "A rainha-mãe",
+      "Aspenaz, o chefe dos eunucos",
+      "O sumo sacerdote dos caldeus"
+    ],
+    "correta": 1,
+    "referencia": "Daniel 5:10-12"
+  },
+  {
+    "id": 48,
+    "pergunta": "Por que Daniel recusou os presentes oferecidos pelo rei Belsazar, dizendo que ele podia ficar com as suas dádivas ou dar os seus prémios a outros?",
+    "opcoes": [
+      "Porque a lei judaica proibia aceitar presentes de reis estrangeiros.",
+      "Porque ele pretendia doar tudo imediatamente aos pobres da Babilônia.",
+      "Porque ele pretendia ler a escritura e dar a interpretação ao rei de qualquer maneira, sem buscar glória pessoal.",
+      "Porque ele já era muito rico e não precisava de ouro nem de vestes de púrpura."
+    ],
+    "correta": 2,
+    "referencia": "Daniel 5:17"
+  },
+  {
+    "id": 49,
+    "pergunta": "Quais foram as palavras escritas na parede que Daniel leu e interpretou para o rei?",
+    "opcoes": [
+      "Alfa, Ômega, Epsilon",
+      "Manel, Tequel, Peres",
+      "Eli, Eli, Lamá Sabactâni",
+      "Shaday, Adonai, Elohim"
+    ],
+    "correta": 1,
+    "referencia": "Daniel 5:25"
+  },
+  {
+    "id": 50,
+    "pergunta": "O que aconteceu com Belsazar naquela mesma noite após a interpretação do escrito na parede?",
+    "opcoes": [
+      "Ele se arrependeu profundamente, jejuou por três dias e entregou o trono voluntariamente a Daniel.",
+      "Ele foi morto, e Dario, o medo, recebeu o reino, tendo cerca de sessenta e dois anos de idade.",
+      "O palácio foi atingido por um raio e incendiado por completo.",
+      "Ele fugiu disfarçado para o deserto junto com seus conselheiros mais próximos."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 5:30-31"
+  },
+  {
+    "id": 51,
+    "pergunta": "Quantos príncipes Dario, o medo, constituiu sobre todo o reino para que governssem sobre as províncias?",
+    "opcoes": [
+      "Três príncipes (dos quais Daniel era o primeiro)",
+      "Setenta príncipes",
+      "Doze príncipes",
+      "Cem príncipes"
+    ],
+    "correta": 0,
+    "referencia": "Daniel 6:1-2"
+  },
+  {
+    "id": 52,
+    "pergunta": "Por que os outros príncipes e presidentes tentaram encontrar alguma ocasião ou falta em Daniel para acusá-lo perante o rei?",
+    "opcoes": [
+      "Porque eles descobriram que Daniel planejava aplicar um golpe de Estado.",
+      "Porque Daniel era leal, e não se achava nele nenhum erro nem culpa.",
+      "Porque Daniel se recusava a pagar os impostos exigidos pelo novo governo.",
+      "Porque Daniel havia insultado publicamente os deuses dos medos e dos persas."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 6:4"
+  },
+  {
+    "id": 53,
+    "pergunta": "Qual foi a única área em que os inimigos de Daniel perceberam que poderiam encontrar uma acusação contra ele?",
+    "opcoes": [
+      "Nas finanças públicas sob a sua administração",
+      "Na sua relação com os líderes estrangeiros",
+      "Na lei do seu Deus",
+      "Na forma como tratava os subordinados no palácio"
+    ],
+    "correta": 2,
+    "referencia": "Daniel 6:5"
+  },
+  {
+    "id": 54,
+    "pergunta": "Qual foi o decreto real que os príncipes e presidentes convenceram o rei Dario a assinar e estabelecer por estatuto irrevogável?",
+    "opcoes": [
+      "Que ninguém pudesse construir templos fora da capital durante trinta dias.",
+      "Que qualquer pessoa que fizesse alguma petição a qualquer deus ou homem, exceto ao rei, por espaço de trinta dias, fosse lançada na cova dos leões.",
+      "Que todos os estrangeiros fossem banidos do palácio imperial por um ano.",
+      "Que as leis da Babilônia fossem substituídas integralmente pelas leis dos medos."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 6:7"
+  },
+  {
+    "id": 55,
+    "pergunta": "O que Daniel fez assim que soube que o documento do decreto real havia sido assinado?",
+    "opcoes": [
+      "Entrou em sua casa (onde as janelas do seu quarto estavam abertas contra Jerusalém) e continuou se ajoelhando, orando e dando graças ao seu Deus três vezes por dia.",
+      "Escondeu-se em uma caverna secreta fora da cidade para continuar orando em segurança.",
+      "Enviou uma carta de protesto formal ao rei Dario exigindo a revogação da lei.",
+      "Cessou temporariamente suas orações públicas por trinta dias para evitar conflitos."
+    ],
+    "correta": 0,
+    "referencia": "Daniel 6:10"
+  },
+  {
+    "id": 56,
+    "pergunta": "Como os acusadores flagraram Daniel violando o decreto real?",
+    "opcoes": [
+      "Eles o vigiaram secretamente de longe e o seguiram até um templo clandestino.",
+      "Eles se ajuntaram e o encontraram orando e suplicando diante do seu Deus.",
+      "Eles interceptaram uma carta escrita por Daniel endereçada aos líderes de Judá.",
+      "Eles o escutaram conversando sobre a lei em uma reunião oficial do governo."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 6:11"
+  },
+  {
+    "id": 57,
+    "pergunta": "Qual foi a reação do rei Dario ao saber da acusação contra Daniel e perceber que havia sido induzido a assinar a sua condenação?",
+    "opcoes": [
+      "Ele ficou muito satisfeito, pois já desejava afastar Daniel do governo.",
+      "Ele ficou muito aflito e pôs o coração em salvar a Daniel, esforçando-se até o pôr do sol para livrá-lo.",
+      "Ele mandou prender imediatamente os conselheiros que o haviam enganado.",
+      "Ele declarou guerra aos nobres que conspiraram contra o profeta."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 6:14"
+  },
+  {
+    "id": 58,
+    "pergunta": "O que o rei Dario disse a Daniel momentos antes de ele ser lançado na cova dos leões?",
+    "opcoes": [
+      "\"Adeus, meu fiel servo; que os deuses da Pérsia tenham piedade de ti.\"",
+      "\"O teu Deus, a quem tu continuamente serves, ele te livrará.\"",
+      "\"Espero que o teu silêncio durante estes dias mude o destino da tua sentença.\"",
+      "\"Não temas, pois meus guardas vigiarão a entrada da cova a noite toda.\""
+    ],
+    "correta": 1,
+    "referencia": "Daniel 6:16"
+  },
+  {
+    "id": 59,
+    "pergunta": "O que foi colocado sobre a boca da cova dos leões, e o que o rei fez com o seu próprio anel e com o anel dos seus grandes para que nada se mudasse em relação a Daniel?",
+    "opcoes": [
+      "Uma grande pedra foi posta sobre a boca da cova, e o rei a selou com o seu próprio anel e com o anel dos seus grandes.",
+      "Uma grade de ferro maciço foi trancada com correntes de ouro e selada com cera imperial.",
+      "Vários sacos de areia pesados bloquearam a entrada sob a supervisão do capitão da guarda.",
+      "Uma porta de bronze foi soldada para impedir qualquer tentativa de resgate."
+    ],
+    "correta": 0,
+    "referencia": "Daniel 6:17"
+  },
+  {
+    "id": 60,
+    "pergunta": "Qual foi o novo decreto emitido pelo rei Dario após constatar que Daniel havia saído ileso da cova dos leões?",
+    "opcoes": [
+      "Que todos os templos do império fossem dedicados ao Deus de Daniel e que o profeta se tornasse rei supremo.",
+      "Que em todo o domínio do seu reino os homens temessem e temessem perante o Deus de Daniel, porque ele é o Deus vivo e que se derrama para sempre.",
+      "Que todos os medos e persas adotassem as leis civis e religiosas de Israel.",
+      "Que os oficiais do reino fossem destituídos permanentemente de seus cargos."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 6:26"
+  },
+  {
+    "id": 61,
+    "pergunta": "No primeiro ano de Belsazar, rei da Babilônia, que tipo de experiência Daniel teve enquanto estava em sua cama?",
+    "opcoes": [
+      "Ele teve um sonho e visões da sua cabeça.",
+      "Ele recebeu uma visita física do anjo Gabriel.",
+      "Ele ouviu uma voz audível vinda do céu durante a madrugada.",
+      "Ele teve uma visão enquanto jejuava à beira do rio Tigre."
+    ],
+    "correta": 0,
+    "referencia": "Daniel 7:1"
+  },
+  {
+    "id": 62,
+    "pergunta": "No começo de sua visão, Daniel viu o grande mar sendo agitado por quais elementos?",
+    "opcoes": [
+      "Um terremoto violento que abalou a terra e o mar",
+      "Os quatro ventos do céu",
+      "Uma forte tempestade de granizo e fogo",
+      "O soar de trombetas celestiais"
+    ],
+    "correta": 1,
+    "referencia": "Daniel 7:2"
+  },
+  {
+    "id": 63,
+    "pergunta": "Quantos animais grandes e diferentes subiram do mar, representando reinos e reis que se levantariam na terra?",
+    "opcoes": [
+      "Dois animais",
+      "Três animais",
+      "Quatro animais",
+      "Sete animais"
+    ],
+    "correta": 2,
+    "referencia": "Daniel 7:3"
+  },
+  {
+    "id": 64,
+    "pergunta": "A que animal era semelhante o primeiro animal que subiu do mar, que tinha asas de águia e cujas asas foram arrancadas?",
+    "opcoes": [
+      "A um leão",
+      "A um urso",
+      "A um leopardo",
+      "A um monstro com dentes de ferro"
+    ],
+    "correta": 0,
+    "referencia": "Daniel 7:4"
+  },
+  {
+    "id": 65,
+    "pergunta": "O segundo animal era semelhante a qual bicho, o qual se levantou de um lado, tendo na boca três costelas entre os seus dentes?",
+    "opcoes": [
+      "A um leopardo",
+      "A um leão",
+      "A um urso",
+      "A um dragão"
+    ],
+    "correta": 2,
+    "referencia": "Daniel 7:5"
+  },
+  {
+    "id": 66,
+    "pergunta": "O terceiro animal era semelhante a qual criatura, que tinha quatro asas de ave nas costas e também quatro cabeças?",
+    "opcoes": [
+      "A um leão",
+      "A um urso",
+      "A um leopardo",
+      "A um touro alado"
+    ],
+    "correta": 2,
+    "referencia": "Daniel 7:6"
+  },
+  {
+    "id": 67,
+    "pergunta": "Como era o quarto animal, que era muito espantoso, terrível e forte, possuindo grandes dentes de ferro e dez chifres?",
+    "opcoes": [
+      "Ele devorava e fazia em pedaços, pisando os pés do restante com os pés.",
+      "Ele tinha asas douradas e brilhava como o sol.",
+      "Ele falava palavras de sabedoria e buscava a paz entre as nações.",
+      "Ele voava pelos céus guiando os outros animais."
+    ],
+    "correta": 0,
+    "referencia": "Daniel 7:7"
+  },
+  {
+    "id": 68,
+    "pergunta": "Quem se assentou para julgar, cujas vestes eram brancas como a neve e o cabelo da sua cabeça como a pura lã, cujo trono era de chamas de fogo?",
+    "opcoes": [
+      "O Anjo do Senhor",
+      "O Filho do Homem",
+      "O Ancião de Dias",
+      "O Arcanjo Miguel"
+    ],
+    "correta": 2,
+    "referencia": "Daniel 7:9"
+  },
+  {
+    "id": 69,
+    "pergunta": "Quem foi trazido perante o Ancião de Dias nas visões da noite, recebendo domínio, glória e um reino para que todos os povos, nações e línguas o servissem?",
+    "opcoes": [
+      "Um anjo poderoso vestido de linho",
+      "Um semelhante a um filho de homem",
+      "O profeta Daniel em espírito",
+      "O sumo sacerdote do templo restaurado"
+    ],
+    "correta": 1,
+    "referencia": "Daniel 7:13-14"
+  },
+  {
+    "id": 70,
+    "pergunta": "Qual foi a reação imediata de Daniel ao contemplar e reter todas essas visões em sua mente?",
+    "opcoes": [
+      "Os seus pensamentos muito o perturbaram, a sua cor mudou-se nele, mas ele guardou o assunto no coração.",
+      "Ele desmaiou e permaneceu sem sentidos durante três dias inteiros.",
+      "Ele escreveu imediatamente um livro para avisar o rei Belsazar sobre o fim da Babilônia.",
+      "Ele convocou os sábios do reino para debater o significado dos animais."
+    ],
+    "correta": 0,
+    "referencia": "Daniel 7:28"
+  },
+  {
+    "id": 71,
+    "pergunta": "No terceiro ano do reinado do rei Belsazar, onde Daniel teve a visão descrita no capítulo 8?",
+    "opcoes": [
+      "Na cidade de Jerusalém, junto ao portão das ovelhas",
+      "Na cidade de Susã, na província de Elão, junto ao rio Ulai",
+      "Na planície de Dura, na província da Babilônia",
+      "À beira do rio Hidequel (Tigre)"
+    ],
+    "correta": 1,
+    "referencia": "Daniel 8:1-2"
+  },
+  {
+    "id": 72,
+    "pergunta": "O que Daniel viu em pé diante do rio na sua visão, que tinha dois chifres altos, sendo um mais alto do que o outro e subindo por último?",
+    "opcoes": [
+      "Um bode peludo",
+      "Um carneiro",
+      "Um leopardo feroz",
+      "Um urso forte"
+    ],
+    "correta": 1,
+    "referencia": "Daniel 8:3"
+  },
+  {
+    "id": 73,
+    "pergunta": "De onde veio o bode que correu sobre toda a terra sem tocar no chão, possuindo um chifre notável entre os olhos, que atacou o carneiro?",
+    "opcoes": [
+      "Do sul, atravessando o deserto do Egito",
+      "Do oriente, vindo das montanhas da Pérsia",
+      "Do ocidente (do oeste)",
+      "Do norte, vindo das terras dos medos"
+    ],
+    "correta": 2,
+    "referencia": "Daniel 8:5"
+  },
+  {
+    "id": 74,
+    "pergunta": "O que aconteceu com o grande chifre do bode após ele derrotar o carneiro e se engrandecer sobremaneira?",
+    "opcoes": [
+      "Ele se dividiu em quatro chifres notáveis, voltados para os quatro ventos do céu.",
+      "Ele foi quebrado e, em seu lugar, subiram outros quatro chifres notáveis.",
+      "Ele foi queimado pelo fogo que desceu do céu.",
+      "Ele se transformou em uma coroa de ouro puro."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 8:8"
+  },
+  {
+    "id": 75,
+    "pergunta": "O que saiu de um dos quatro chifres notáveis e cresceu muito para o sul, para o oriente e para a terra gloriosa (Israel)?",
+    "opcoes": [
+      "Um reino pacífico de comerciantes",
+      "Um chifre pequeno, que se tornou muito grande",
+      "Uma muralha intransponível de ferro",
+      "Um exército de anjos defensores"
+    ],
+    "correta": 1,
+    "referencia": "Daniel 8:9"
+  },
+  {
+    "id": 76,
+    "pergunta": "Até que nível de poder o chifre pequeno se engrandeceu, conforme o texto que descreve as suas ações contra o exército dos céus?",
+    "opcoes": [
+      "Ele se engrandeceu até o príncipe do exército, tirou-lhe o sacrifício contínuo e deitou por terra o lugar do seu santuário.",
+      "Ele se tornou imperador de todo o mundo conhecido e exigiu adoração divina sob pena de morte.",
+      "Ele conquistou o sol, a lua e as estrelas, alterando o curso dos planetas.",
+      "Ele construiu uma torre que alcançava diretamente o trono de Deus."
+    ],
+    "correta": 0,
+    "referencia": "Daniel 8:11"
+  },
+  {
+    "id": 77,
+    "pergunta": "Quem Daniel ouviu falar (um santo falando a outro santo) perguntando quanto tempo duraria a visão acerca do sacrifício contínuo e da transgressão assoladora?",
+    "opcoes": [
+      "O anjo Gabriel",
+      "O arcanjo Miguel",
+      "Um certo santo",
+      "O Ancião de Dias"
+    ],
+    "correta": 2,
+    "referencia": "Daniel 8:13"
+  },
+  {
+    "id": 78,
+    "pergunta": "Qual foi a resposta dada sobre o tempo que duraria a visão referente à pisada do santuário e do exército?",
+    "opcoes": [
+      "Setenta semanas de anos",
+      "Mil duzentos e noventa dias",
+      "Dois mil e trezentas tardes e manhãs; e o santuário será purificado",
+      "Sete tempos de provação"
+    ],
+    "correta": 2,
+    "referencia": "Daniel 8:14"
+  },
+  {
+    "id": 79,
+    "pergunta": "Quem foi ordenado a dar a entender a visão a Daniel, enquanto este buscava o significado do que vira?",
+    "opcoes": [
+      "O anjo Gabriel",
+      "Um anjo sem nome vestido de linho",
+      "O profeta Elias em espírito",
+      "O próprio Ancião de Dias"
+    ],
+    "correta": 0,
+    "referencia": "Daniel 8:15-16"
+  },
+  {
+    "id": 80,
+    "pergunta": "Qual foi a reação imediata de Daniel após ouvir a voz do anjo Gabriel e ver a grandiosidade da visão?",
+    "opcoes": [
+      "Ele cantou um hino de louvor e agradecimento ao Altíssimo.",
+      "Ele caiu com o rosto em terra, profundamente adormecido e sem sentidos, até ser tocado e levantado.",
+      "Ele escreveu imediatamente um pergaminho para registrar cada detalhe para os futuros líderes.",
+      "Ele convocou os sábios de Susã para decifrarem o enigma."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 8:18"
+  },
+  {
+    "id": 81,
+    "pergunta": "No primeiro ano de Dario, filho de Assuero, da linhagem dos medos, o que Daniel entendeu através dos livros, segundo a palavra do Senhor dada ao profeta Jeremias?",
+    "opcoes": [
+      "Que a Babilônia seria destruída em exatamente setenta dias.",
+      "Que o cativeiro de Jerusalém terminaria após setenta anos.",
+      "Que o templo reconstruído seria novamente destruído por um fogo celestial.",
+      "Que os judeus seriam espalhados por todas as nações da terra por sete gerações."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 9:1-2"
+  },
+  {
+    "id": 82,
+    "pergunta": "De que forma Daniel se dirigiu ao Senhor Deus para buscar o cumprimento da promessa e confessar os pecados do seu povo?",
+    "opcoes": [
+      "Com danças e cânticos de louvor no pátio do palácio real.",
+      "Com oração e súplicas, em jejum, pano de saco e cinza.",
+      "Oferecendo sacrifícios de animais escondido dos guardas babilônicos.",
+      "Escrevendo cartas de apelo político diretamente ao rei Dario."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 9:3"
+  },
+  {
+    "id": 83,
+    "pergunta": "O que Daniel confessou sobre a responsabilidade do povo de Israel e de seus líderes diante da Lei de Moisés?",
+    "opcoes": [
+      "Que eles haviam guardado todos os mandamentos, mas foram punidos por engano.",
+      "Que eles não haviam dado ouvidos aos servos de Deus, os profetas, que falavam em nome do Senhor aos reis, príncipes e pais.",
+      "Que eles haviam cumprido os rituais, mas esquecido de fazer caridade aos estrangeiros.",
+      "Que apenas a geração mais jovem era culpada pelas transgressões cometidas."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 9:5-6"
+  },
+  {
+    "id": 84,
+    "pergunta": "A quem Daniel atribuiu a justiça quando reconheceu a veracidade da desonra, da dispersão e do castigo que recaíra sobre Jerusalém e Judá?",
+    "opcoes": [
+      "Ao rei Dario, que impôs leis severas aos exilados.",
+      "Aos reis da Babilônia, que executaram os juízos com suas próprias forças.",
+      "A o Senhor, nosso Deus, pois Ele é justo em todas as suas obras.",
+      "Ao povo de Israel, que merecia uma punição ainda maior."
+    ],
+    "correta": 2,
+    "referencia": "Daniel 9:14"
+  },
+  {
+    "id": 85,
+    "pergunta": "Qual foi a principal motivação pela qual Daniel pediu que o Senhor olhasse para o seu santuário desolado e perdoasse o seu povo?",
+    "opcoes": [
+      "Por causa da força militar que Israel ainda possuía para se defender.",
+      "Por amor ao próprio Senhor, e porque a cidade e o povo eram chamados pelo nome de Deus.",
+      "Para que os reis persas temessem o poder político dos judeus.",
+      "Porque o prazo de setenta anos já havia expirado em dobro."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 9:17-19"
+  },
+  {
+    "id": 86,
+    "pergunta": "Enquanto Daniel ainda estava falando, orando e confessando o seu pecado, quem veio voando rapidamente até ele, tocando-o por volta da hora da oferta dos sacrifícios da tarde?",
+    "opcoes": [
+      "O arcanjo Miguel",
+      "O anjo Gabriel",
+      "Um ser sem nome vestido de linho puro",
+      "Um anjo mensageiro de fogo"
+    ],
+    "correta": 1,
+    "referencia": "Daniel 9:20-21"
+  },
+  {
+    "id": 87,
+    "pergunta": "Com qual propósito o anjo Gabriel afirmou ter vindo para dar instrução a Daniel?",
+    "opcoes": [
+      "Para lhe dar habilidade e entendimento a respeito da visão e do futuro político da Pérsia.",
+      "Para lhe dar sabedoria, habilidade e entendimento sobre as profecias.",
+      "Para anunciar a reconstrução imediata dos muros da cidade sob o comando de Ciro.",
+      "Para revelar o dia exato em que o império de Dario cairia."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 9:22"
+  },
+  {
+    "id": 88,
+    "pergunta": "Quantas semanas foram determinadas sobre o povo de Daniel e sobre a cidade santa (Jerusalém) para cessar a transgressão, dar fim aos pecados e ungir o Santíssimo?",
+    "opcoes": [
+      "Sete semanas de anos",
+      "Setenta semanas de anos",
+      "Duzentas e trinta semanas",
+      "Doze semanas proféticas"
+    ],
+    "correta": 1,
+    "referencia": "Daniel 9:24"
+  },
+  {
+    "id": 89,
+    "pergunta": "O que aconteceria ao Ungido (o Messias) após o término das sessenta e duas semanas, além das primeiras sete semanas?",
+    "opcoes": [
+      "Ele seria coroado rei supremo de todas as nações da terra em Jerusalém.",
+      "Ele seria tirado (morto/cutelado), mas não por si mesmo.",
+      "Ele estabeleceria um império militar físico na cidade de Roma.",
+      "Ele renunciaria ao seu ministério e se retiraria para o deserto."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 9:26"
+  },
+  {
+    "id": 90,
+    "pergunta": "O que o texto profético diz que faria com que a desolação se estendesse até o fim sobre a cidade e o santuário?",
+    "opcoes": [
+      "A aliança de paz feita com as nações vizinhas.",
+      "As abominações cometidas pelo príncipe que há de vir.",
+      "O abandono voluntário dos sacrifícios pelos próprios sacerdotes de Israel.",
+      "A invasão de exércitos vindos exclusivamente do extremo oriente."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 9:26-27"
+  },
+  {
+    "id": 91,
+    "pergunta": "No terceiro ano de Ciro, rei da Pérsia, que nome foi revelado a Daniel, cujo entendimento lhe foi dado em uma visão?",
+    "opcoes": [
+      "Beltesazar",
+      "Daniel",
+      "Arioque",
+      "Miguel"
+    ],
+    "correta": 1,
+    "referencia": "Daniel 10:1"
+  },
+  {
+    "id": 92,
+    "pergunta": "Por quanto tempo completo Daniel esteu pranteando, sem comer manjares suaves, nem carne, nem vinho, nem se ungindo com óleo?",
+    "opcoes": [
+      "Três dias completos",
+      "Sete dias completos",
+      "Três semanas completas",
+      "Um ano completo"
+    ],
+    "correta": 2,
+    "referencia": "Daniel 10:2-3"
+  },
+  {
+    "id": 93,
+    "pergunta": "Junto à margem de qual grande rio estava Daniel quando teve a visão do homem vestido de linho, cujos lombos estavam cingidos com ouro de Ufaz?",
+    "opcoes": [
+      "Rio Ulai",
+      "Rio Eufrates (ou Hidequel)",
+      "Rio Jordão",
+      "Rio Tigre e Nilo"
+    ],
+    "correta": 1,
+    "referencia": "Daniel 10:4"
+  },
+  {
+    "id": 94,
+    "pergunta": "Como Daniel descreveu a aparência do homem que viu vestido de linho durante a sua visão à beira do rio?",
+    "opcoes": [
+      "O seu corpo era como o berilo, o seu rosto parecia um relâmpago, os seus olhos como tochas de fogo, e a voz das suas palavras como o som de uma multidão.",
+      "Ele trazia uma coroa de espinhos e vestes manchadas de sangue.",
+      "Ele tinha asas douradas e brilhava como o sol ao meio-dia.",
+      "Ele parecia um homem comum, vestido com roupas simples de camponês."
+    ],
+    "correta": 0,
+    "referencia": "Daniel 10:5-6"
+  },
+  {
+    "id": 95,
+    "pergunta": "O que aconteceu com os homens que estavam com Daniel quando ele viu a grande visão?",
+    "opcoes": [
+      "Eles também viram a visão com clareza e começaram a louvar a Deus.",
+      "Uma grande visão não os atingiu, mas sobreveio-lhes um grande tremor, de sorte que fugiram e se esconderam.",
+      "Eles caíram no sono e não acordaram até o dia seguinte.",
+      "Eles tentaram atacar o mensageiro celestial com suas espadas."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 10:7"
+  },
+  {
+    "id": 96,
+    "pergunta": "Qual foi a reação física de Daniel ao ficar sozinho e contemplar aquela grande visão?",
+    "opcoes": [
+      "A sua força se tornou em corrupção, não lhe restando vigor algum, e caiu com o rosto em terra, profundamente adormecido.",
+      "Ele sentiu uma paz indescritível e começou a cantar hinos de louvor em voz alta.",
+      "Ele correu atrás do mensageiro celestial para pedir mais revelações.",
+      "Ele permaneceu de pé, firme e inabalável diante da presença do anjo."
+    ],
+    "correta": 0,
+    "referencia": "Daniel 10:8-9"
+  },
+  {
+    "id": 97,
+    "pergunta": "Quem foi o anjo que tocou em Daniel, levantando-o sobre os seus joelhos e sobre as palmas das suas mãos, chamando-o de \"homem muito amado\"?",
+    "opcoes": [
+      "O arcanjo Miguel",
+      "Um anjo mensageiro (não nomeado diretamente no verso, mas identificado nas tradições como o anjo que falava com ele, frequentemente associado a Gabriel ou a uma teofania) / Nota: O texto diz apenas que uma mão o tocou e um anjo falou com ele.",
+      "Um ser sem nome que o fortaleceu com palavras de ânimo.",
+      "O próprio Ancião de Dias."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 10:10-11"
+  },
+  {
+    "id": 98,
+    "pergunta": "Por que o mensageiro celestial disse que demorou vinte e um dias para chegar até Daniel após o início de suas orações?",
+    "opcoes": [
+      "Porque ele foi impedido pelo príncipe do reino da Pérsia, até que Miguel, um dos primeiros príncipes, veio para ajudá-lo.",
+      "Porque ele precisava percorrer todas as províncias da Babilônia para reunir informações.",
+      "Porque o próprio Deus ordenou que ele esperasse o fim do jejum de Daniel.",
+      "Porque ele se perdeu nas montanhas de Susã devido a uma forte tempestade."
+    ],
+    "correta": 0,
+    "referencia": "Daniel 10:13"
+  },
+  {
+    "id": 99,
+    "pergunta": "Com qual objetivo o anjo disse que havia vindo para falar com Daniel nos últimos dias?",
+    "opcoes": [
+      "Para declarar a data exata da queda do Império Romano.",
+      "Para lhe dar a entender o que há de acontecer ao seu povo nos últimos dias; porque a visão é ainda para os dias futuros.",
+      "Para ordenar a reconstrução imediata dos muros de Jerusalém.",
+      "Para anunciar um tempo de paz perpétua entre a Pérsia e Israel."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 10:14"
+  },
+  {
+    "id": 100,
+    "pergunta": "O que aconteceu com Daniel após o mensageiro celestial tocar novamente os seus lábios e fortalecê-lo com palavras de paz?",
+    "opcoes": [
+      "Ele desmaiou novamente e perdeu a fala por mais três dias.",
+      "Ele recuperou as forças e disse: \"Fala, senhor meu, pois me fortaleceste.\"",
+      "Ele escreveu imediatamente um livro registrando a profecia em detalhes.",
+      "Ele recusou-se a ouvir o restante da mensagem por medo."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 10:18-19"
+  },
+  {
+    "id": 101,
+    "pergunta": "No início do capítulo 11, o mensageiro celestial diz a Daniel que ainda se levantariam quantos reis na Pérsia, antes que o quarto rei acumulasse riquezas superiores a todos e provocasse contra o reino da Grécia?",
+    "opcoes": [
+      "Apenas dois reis",
+      "Três reis",
+      "Cinco reis",
+      "Sete reis"
+    ],
+    "correta": 1,
+    "referencia": "Daniel 11:2"
+  },
+  {
+    "id": 102,
+    "pergunta": "O que aconteceria após a ascensão de um rei poderoso (o reino grego de Alexandre, o Grande), cujo domínio seria conforme a sua vontade?",
+    "opcoes": [
+      "O seu reino seria estabelecido para sempre sem divisões.",
+      "O seu reino seria quebrado e repartido para os quatro ventos do céu, mas não para a sua posteridade.",
+      "O império seria conquistado pacificamente pelos persas.",
+      "A capital do império seria transferida permanentemente para Jerusalém."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 11:4"
+  },
+  {
+    "id": 103,
+    "pergunta": "Como o texto profético descreve a relação política e os conflitos que ocorreriam entre o \"rei do sul\" e o \"rei do norte\"?",
+    "opcoes": [
+      "Uma aliança eterna de paz e comércio livre.",
+      "Alianças falsas, casamentos políticos arranjados e guerras frequentes pelo controle de territórios.",
+      "Uma separação total de fronteiras sem nenhum contato diplomático.",
+      "O domínio pacífico de ambos sob a liderança de um sumo sacerdote comum."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 11:5-6"
+  },
+  {
+    "id": 104,
+    "pergunta": "O que o texto relata que aconteceria com a filha do rei do sul (Berenice) após ela ser dada em casamento ao rei do norte (Antíoco II) para firmar uma aliança?",
+    "opcoes": [
+      "Ela se tornaria rainha de ambos os impérios de forma pacífica.",
+      "Ela perderia a sua força, assim como aqueles que a trouxeram, o seu pai e o que a fortalecia naqueles tempos.",
+      "Ela retornaria vitoriosa para o Egito com grandes tesouros.",
+      "Ela fundaria uma nova dinastia independente em Israel."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 11:6"
+  },
+  {
+    "id": 105,
+    "pergunta": "O que faria o ramo das raízes daquela mulher (referindo-se ao seu irmão, Ptolemeu III Evergetes) ao marchar com um exército contra o rei do norte?",
+    "opcoes": [
+      "Ele se renderia sem lutar e assinaria um tratado de paz perpétua.",
+      "Ele entrará na fortaleza do rei do norte, operará contra eles e prevalecerá, levando até mesmo os deuses deles para o Egito.",
+      "Ele seria derrotado logo na primeira batalha nas fronteiras da Síria.",
+      "Ele abandonaria a campanha militar por causa de uma revolta interna no Egito."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 11:7-8"
+  },
+  {
+    "id": 106,
+    "pergunta": "Como o texto profético descreve a figura do \"homem desprezível\" (muitas vezes identificado pelos historiadores com Antíoco IV Epifânio) que se levantaria no lugar do rei do norte?",
+    "opcoes": [
+      "Alguém que receberia a dignidade real sem ser por direito de linhagem, agindo com astúcia e bajulação.",
+      "Um líder amado por todas as nações vizinhas devido à sua generosidade.",
+      "Um rei pacífico que reconstruiria todos os templos destruídos no oriente.",
+      "Um comandante militar que nunca perdeu uma única batalha em toda a sua vida."
+    ],
+    "correta": 0,
+    "referencia": "Daniel 11:21"
+  },
+  {
+    "id": 107,
+    "pergunta": "O que o \"rei desprezível\" faria contra o santuário (o templo em Jerusalém), conforme descrito nos versículos centrais do capítulo?",
+    "opcoes": [
+      "Ele ampliaria as suas dependências para agradar aos sacerdotes judeus.",
+      "Ele tiraria o sacrifício contínuo e colocaria a abominação desoladora.",
+      "Ele transformaria o templo em um palácio real fortificado.",
+      "Ele o fecharia temporariamente para fins de reforma arquitetônica."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 11:31"
+  },
+  {
+    "id": 108,
+    "pergunta": "Como se comportaria o povo que conhece a seu Deus durante esse período de grande perseguição e corrupção promovida pelo rei tirano?",
+    "opcoes": [
+      "Eles abandonariam completamente a fé para escapar das punições.",
+      "Eles se esforçarão e farão proezas (ou se destacarão e agirão com firmeza).",
+      "Eles fugiriam para o deserto e formariam um exército de conquista global.",
+      "Eles aceitariam os deuses estrangeiros em troca de privilégios políticos."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 11:32"
+  },
+  {
+    "id": 109,
+    "pergunta": "O que aconteceria com alguns dos mais sábios do povo (os entendidos) durante o período de provação para que fossem depurados, purificados e embranquecidos?",
+    "opcoes": [
+      "Eles seriam promovidos a governadores de todas as províncias do império.",
+      "Eles cairiam (seriam perseguidos ou mortos) até ao tempo do fim.",
+      "Eles receberiam revelações diretas sobre o dia exato do fim do mundo.",
+      "Eles conseguiriam convencer o rei a revogar todas as leis opressivas."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 11:35"
+  },
+  {
+    "id": 110,
+    "pergunta": "De acordo com a profecia do final do capítulo 11, o que acontecerá com o rei do norte (o rei arrogante) quando ele armar as tendas do seu palácio entre os mares e o monte santo e glorioso?",
+    "opcoes": [
+      "Ele fundará um império eterno que durará por gerações.",
+      "Ele chegará ao seu fim, e não haverá quem o socorra.",
+      "Ele abdicará do trono voluntariamente e se retirará para o oriente.",
+      "Ele fará uma aliança duradera com o rei do sul."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 11:45"
+  },
+  {
+    "id": 111,
+    "pergunta": "Quem é apresentado no início do capítulo 12 como o grande príncipe que se levanta a favor dos filhos do povo de Israel?",
+    "opcoes": [
+      "O anjo Gabriel",
+      "O arcanjo Miguel",
+      "O profeta Elias",
+      "O Ancião de Dias"
+    ],
+    "correta": 1,
+    "referencia": "Daniel 12:1"
+  },
+  {
+    "id": 112,
+    "pergunta": "O que é dito que acontecerá naquele tempo, sendo um tempo de angústia, qual nunca houve desde que houve nação até então?",
+    "opcoes": [
+      "Haverá um grande terremoto que destruirá a cidade de Babilônia.",
+      "O povo de Daniel será a salvo, todo aquele que for achado escrito no livro.",
+      "Todos os reis da terra se unirão para adorar o Deus de Israel.",
+      "O templo de Jerusalém será reconstruído em apenas três dias."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 12:1"
+  },
+  {
+    "id": 113,
+    "pergunta": "O que acontecerá a muitos daqueles que dormem no pó da terra, segundo a profecia do versículo 2?",
+    "opcoes": [
+      "Uns para a vida eterna, e outros para vergonha e desprezo eterno.",
+      "Todos ressuscitarão imediatamente com corpos celestiais imortais.",
+      "Apenas os reis e príncipes despertarão para o julgamento final.",
+      "Eles permanecerão dormindo até o fim dos tempos sem julgamento."
+    ],
+    "correta": 0,
+    "referencia": "Daniel 12:2"
+  },
+  {
+    "id": 114,
+    "pergunta": "Como brilharão os que forem sábios (ou entendidos), e aqueles que ensinam a muitos a justiça?",
+    "opcoes": [
+      "Como as estrelas sempre e eternamente.",
+      "Como o fogo ardente da fornalha.",
+      "Como o sol ao meio-dia sobre o monte santo.",
+      "Como a prata refinada no cadinho."
+    ],
+    "correta": 0,
+    "referencia": "Daniel 12:3"
+  },
+  {
+    "id": 115,
+    "pergunta": "O que Daniel recebeu a ordem de fazer com as palavras e o livro até o tempo do fim?",
+    "opcoes": [
+      "Queimar o livro para que ninguém mais pudesse ler os segredos.",
+      "Fechar as palavras e selar o livro até ao tempo do fim.",
+      "Distribuir cópias do livro para todos os príncipes da Pérsia.",
+      "Traduzir o texto para a língua dos gregos."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 12:4"
+  },
+  {
+    "id": 116,
+    "pergunta": "O que o texto diz que muitos farão enquanto o conhecimento se multiplicará?",
+    "opcoes": [
+      "Muitos correrão de uma parte para outra, e o conhecimento se multiplicará.",
+      "Muitos abandonarão a terra para habitar nas regiões celestiais.",
+      "Muitos construirão torres altas para alcançar o céu.",
+      "Muitos guardarão silêncio e deixarão de estudar as profecias."
+    ],
+    "correta": 0,
+    "referencia": "Daniel 12:4"
+  },
+  {
+    "id": 117,
+    "pergunta": "Quando Daniel olhou, quantos outros homens viu em pé, um à margem de um lado do rio e o outro à outra margem?",
+    "opcoes": [
+      "Apenas um anjo mensageiro",
+      "Dois outros homens",
+      "Três profetas antigos",
+      "Quatro guardas celestiais"
+    ],
+    "correta": 1,
+    "referencia": "Daniel 12:5"
+  },
+  {
+    "id": 118,
+    "pergunta": "O que perguntou um dos homens vestido de linho, que estava sobre as águas do rio, àquele que vestia linho e estava por cima das águas?",
+    "opcoes": [
+      "\"Quando será o fim destas maravilhas?\"",
+      "\"Quantos anos durará o cativeiro de Babilônia?\"",
+      "\"Quem governará o império após a morte de Ciro?\"",
+      "\"Quando o templo de Jerusalém será purificado?\""
+    ],
+    "correta": 0,
+    "referencia": "Daniel 12:6"
+  },
+  {
+    "id": 119,
+    "pergunta": "Qual foi a resposta dada sobre o tempo em que se cumpririam todas estas coisas, levantando as mãos ao céu e jurando por Aquele que vive para sempre?",
+    "opcoes": [
+      "Por sete tempos completos e um ano.",
+      "Por um tempo, dois tempos, e metade de um tempo.",
+      "Por setenta semanas de anos exatas.",
+      "Por mil duzentos e noventa dias contínuos."
+    ],
+    "correta": 1,
+    "referencia": "Daniel 12:7"
+  },
+  {
+    "id": 120,
+    "pergunta": "Qual foi a instrução final dada a Daniel pelo mensageiro celestial no encerramento do livro, prometendo-lhe que ele descansaria e estaria na sua herança no fim dos dias?",
+    "opcoes": [
+      "\"Vai, Daniel, porque estas palavras estão fechadas e seladas até ao tempo do fim.\"",
+      "\"Prepara-te para governar sobre todas as províncias da Pérsia.\"",
+      "\"Escreve um novo testamento para as gerações futuras.\"",
+      "\"Fica em silêncio e não contes a ninguém o que viste.\""
+    ],
+    "correta": 0,
+    "referencia": "Daniel 12:9-13"
+  }
+]

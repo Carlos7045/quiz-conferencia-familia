@@ -1,0 +1,1 @@
+﻿Coloque aqui abertura.mp3, opcao.mp3, acerto.mp3 e erro.mp3 para trocar os sons gerados.
