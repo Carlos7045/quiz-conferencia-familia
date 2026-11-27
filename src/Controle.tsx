@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
+import { useCallback, useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react'
 import {
   abrirCanal,
   carregarConfig,
@@ -8,11 +8,16 @@ import {
 } from './armazenamento'
 import { Configuracoes } from './components/Configuracoes'
 import { Chama, Logo, NOME_EVENTO } from './components/Logo'
-import { LETRAS, Tela } from './components/Tela'
+import { Contagem, LETRAS, Tela } from './components/Tela'
 import {
+  EQUIPES,
   PERGUNTAS,
   acertou,
+  alternarPausaCronometro,
   buscarPergunta,
+  congelar,
+  escolherEquipe,
+  esgotarTempo,
   estadoInicial,
   marcar,
   podeSortear,
@@ -23,7 +28,15 @@ import {
   revelarOpcao,
   sortear,
 } from './jogo'
-import { carregarArquivos, configurarSom, pararSons, tocar, type NomeSom } from './sons'
+import {
+  carregarArquivos,
+  configurarSom,
+  iniciarSuspense,
+  pararSons,
+  pararSuspense,
+  tocar,
+  type NomeSom,
+} from './sons'
 import type { EstadoJogo } from './tipos'
 import { useInativo } from './useInativo'
 
@@ -75,12 +88,21 @@ export function Controle() {
   useEffect(() => carregarArquivos(), [])
 
   // ---------- ações ----------
+  /** Troca o estado sem entrar no histórico do "Desfazer" (ex.: pausar o tempo). */
+  const atualizar = useCallback((novo: EstadoJogo) => {
+    if (novo === estadoRef.current) return
+    estadoRef.current = novo
+    setEstado(novo)
+  }, [])
+
   const aplicar = useCallback((novo: EstadoJogo, som?: NomeSom) => {
     const atual = estadoRef.current
     if (novo === atual) return
-    estadoRef.current = novo
-    historico.current = [...historico.current.slice(-29), atual]
+    // No histórico o cronômetro fica pausado com o tempo que faltava,
+    // assim "Desfazer" não faz o tempo esgotar de novo na hora.
+    historico.current = [...historico.current.slice(-29), { ...atual, cronometro: congelar(atual.cronometro) }]
     setPodeDesfazer(true)
+    estadoRef.current = novo
     setEstado(novo)
     if (som) tocar(som)
   }, [])
@@ -96,11 +118,20 @@ export function Controle() {
       aplicar(novo, novo.fase === 'pergunta' ? 'abertura' : undefined)
     },
     proximaOpcao() {
-      aplicar(revelarOpcao(estadoRef.current), 'opcao')
+      aplicar(revelarOpcao(estadoRef.current, configRef.current), 'opcao')
     },
     marcar(posicao: number) {
       const novo = marcar(estadoRef.current, posicao, configRef.current)
       if (novo !== estadoRef.current) aplicar(novo, acertou(novo) ? 'acerto' : 'erro')
+    },
+    esgotarTempo() {
+      aplicar(esgotarTempo(estadoRef.current, configRef.current), 'tempo')
+    },
+    pausarTempo() {
+      atualizar(alternarPausaCronometro(estadoRef.current))
+    },
+    escolherEquipe(indice: number) {
+      aplicar(escolherEquipe(estadoRef.current, indice))
     },
     revelarCorreta() {
       aplicar(revelarCorreta(estadoRef.current))
@@ -121,7 +152,7 @@ export function Controle() {
   }, [])
 
   const reiniciar = () => {
-    if (!confirm('Reiniciar o jogo? Todas as perguntas voltam a ficar disponíveis.')) return
+    if (!confirm('Reiniciar o jogo? Todas as perguntas voltam e o placar é zerado.')) return
     pararSons()
     const novo = estadoInicial()
     estadoRef.current = novo
@@ -133,12 +164,24 @@ export function Controle() {
   // ---------- modo automático ----------
   useEffect(() => {
     if (config.modoOpcoes !== 'automatico' || pausado) return
-    if (estado.fase !== 'pergunta' || estado.escolhida !== null) return
+    if (estado.fase !== 'pergunta' || estado.resultado !== null) return
     if (estado.opcoesVisiveis >= estado.ordem.length) return
     const segundos = estado.opcoesVisiveis === 0 ? config.segundosLeitura : config.segundosEntreOpcoes
     const t = setTimeout(acoes.proximaOpcao, segundos * 1000)
     return () => clearTimeout(t)
   }, [estado, config, pausado, acoes])
+
+  // ---------- contagem regressiva ----------
+  const fimCronometro = estado.resultado === null ? (estado.cronometro?.fim ?? null) : null
+  useEffect(() => {
+    if (fimCronometro == null) return
+    const t = setTimeout(acoes.esgotarTempo, Math.max(0, fimCronometro - Date.now()))
+    iniciarSuspense(fimCronometro - Date.now())
+    return () => {
+      clearTimeout(t)
+      pararSuspense()
+    }
+  }, [fimCronometro, acoes])
 
   // ---------- tela única (sem telão estendido) ----------
   const entrarTelaUnica = () => {
@@ -156,6 +199,12 @@ export function Controle() {
   }, [])
 
   // ---------- atalhos de teclado ----------
+  const pausar = useCallback(() => {
+    const e = estadoRef.current
+    if (e.cronometro && e.resultado === null) acoes.pausarTempo()
+    else setPausado((p) => !p)
+  }, [acoes])
+
   useEffect(() => {
     const aoTeclar = (ev: KeyboardEvent) => {
       const alvo = ev.target as HTMLElement
@@ -166,7 +215,7 @@ export function Controle() {
       else if (k === ' ' || k === 'arrowright') acoes.proximaOpcao()
       else if (posicao >= 0) acoes.marcar(posicao)
       else if (k === 'r') acoes.revelarCorreta()
-      else if (k === 'p') setPausado((p) => !p)
+      else if (k === 'p') pausar()
       else if (k === 'backspace' || (ev.ctrlKey && k === 'z')) desfazer()
       else if (k === 'escape' && telaUnica) sairTelaUnica()
       else return
@@ -174,7 +223,7 @@ export function Controle() {
     }
     window.addEventListener('keydown', aoTeclar)
     return () => window.removeEventListener('keydown', aoTeclar)
-  }, [acoes, desfazer, sairTelaUnica, telaUnica, abrirConfig])
+  }, [acoes, desfazer, pausar, sairTelaUnica, telaUnica, abrirConfig])
 
   const abrirTelao = () => {
     window.open(`${location.pathname}#/telao`, 'telao-peniel', 'popup,width=1280,height=720')
@@ -187,7 +236,7 @@ export function Controle() {
       pausado={pausado}
       podeDesfazer={podeDesfazer}
       acoes={acoes}
-      onPausar={() => setPausado((p) => !p)}
+      onPausar={pausar}
       onDesfazer={desfazer}
     />
   )
@@ -231,11 +280,12 @@ export function Controle() {
 
       <div className="painel-corpo">
         <section className="painel-operador">
-          <VisaoOperador estado={estado} onMarcar={acoes.marcar} />
+          <VisaoOperador estado={estado} pontos={config.pontosPorPergunta} onMarcar={acoes.marcar} />
           {botoes}
         </section>
 
         <aside className="painel-lateral">
+          <Placar estado={estado} onEscolher={acoes.escolherEquipe} />
           <div className="preview">
             <Tela estado={estado} config={config} />
           </div>
@@ -250,26 +300,85 @@ export function Controle() {
 
 // ---------- subcomponentes ----------
 
-function VisaoOperador({ estado, onMarcar }: { estado: EstadoJogo; onMarcar: (p: number) => void }) {
+const estiloEquipe = (i: number) =>
+  ({ '--cor-equipe': EQUIPES[i].cor, '--texto-equipe': EQUIPES[i].texto }) as CSSProperties
+
+/** Placar das equipes: só aparece para o operador, nunca no telão. */
+function Placar({ estado, onEscolher }: { estado: EstadoJogo; onEscolher: (i: number) => void }) {
+  const respondendo = estado.fase === 'pergunta' && estado.resultado === null ? estado.equipe : null
+  const lider = Math.max(...estado.placar)
+  return (
+    <div className="placar">
+      <div className="placar-titulo">
+        <strong>Placar</strong>
+        <span>só aparece aqui no controle · clique numa equipe para mudar a vez</span>
+      </div>
+      <div className="placar-equipes">
+        {EQUIPES.map((eq, i) => {
+          const marca =
+            respondendo === i ? 'respondendo' : estado.proximaEquipe === i && respondendo === null ? 'próxima' : null
+          return (
+            <button
+              key={eq.nome}
+              className={`placar-equipe ${marca ? 'da-vez' : ''}`}
+              style={estiloEquipe(i)}
+              onClick={() => onEscolher(i)}
+              title={respondendo !== null ? 'Passar esta pergunta para esta equipe' : 'Esta equipe recebe a próxima pergunta'}
+            >
+              <span className="placar-nome">
+                {eq.nome}
+                {lider > 0 && estado.placar[i] === lider && ' 🏆'}
+              </span>
+              <span className="placar-pontos">{estado.placar[i]}</span>
+              <span className="placar-marca">{marca ?? ' '}</span>
+            </button>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
+
+function VisaoOperador({
+  estado,
+  pontos,
+  onMarcar,
+}: {
+  estado: EstadoJogo
+  pontos: number
+  onMarcar: (p: number) => void
+}) {
   const pergunta = buscarPergunta(estado.atual)
   if (estado.fase !== 'pergunta' || !pergunta) {
+    const proxima = `A próxima pergunta vai para a equipe ${EQUIPES[estado.proximaEquipe].nome}.`
     const mensagens: Record<string, string> = {
-      inicio: 'Clique em "Próxima pergunta" (ou Enter) para sortear.',
-      fimRodada: `Fim da rodada ${estado.rodada}. ${estado.adiadas.length} pergunta(s) voltam na próxima rodada.`,
+      inicio: `Clique em "Próxima pergunta" (ou Enter) para sortear. ${proxima}`,
+      fimRodada: `Fim da rodada ${estado.rodada}. ${estado.adiadas.length} pergunta(s) voltam na próxima rodada. ${proxima}`,
       fim: 'Todas as perguntas foram respondidas. Use "Reiniciar jogo" nas configurações para começar de novo.',
     }
     return <div className="operador-vazio">{mensagens[estado.fase]}</div>
   }
 
-  const marcada = estado.escolhida !== null
+  const encerrada = estado.resultado !== null
+  const dica = {
+    acerto: `Acertou! +${pontos} pontos para a equipe ${EQUIPES[estado.equipe].nome}.`,
+    erro: 'Errou. Nenhum ponto.',
+    tempo: 'Tempo esgotado. Nenhum ponto.',
+  }
   return (
     <div className="operador">
-      <div className="operador-info">
-        Pergunta nº {pergunta.id} do PDF · {pergunta.referencia}
+      <div className="operador-cabecalho">
+        <span className="operador-equipe" style={estiloEquipe(estado.equipe)}>
+          Equipe {EQUIPES[estado.equipe].nome}
+        </span>
+        <span className="operador-info">
+          Pergunta nº {pergunta.id} do PDF · {pergunta.referencia}
+        </span>
+        {estado.cronometro && !encerrada && <Contagem cronometro={estado.cronometro} compacta />}
       </div>
       <h2>{pergunta.pergunta}</h2>
-      <p className="operador-dica">
-        {marcada ? 'Resposta marcada.' : 'Clique na opção que a pessoa respondeu (ou tecle A–D / 1–4).'}
+      <p className={`operador-dica ${estado.resultado ?? ''}`}>
+        {encerrada ? dica[estado.resultado!] : 'Clique na opção que a equipe respondeu (ou tecle A–D / 1–4).'}
       </p>
       <ol className="operador-opcoes">
         {estado.ordem.map((indice, posicao) => {
@@ -285,7 +394,7 @@ function VisaoOperador({ estado, onMarcar }: { estado: EstadoJogo; onMarcar: (p:
                   correta ? 'correta' : '',
                   escolhida ? (correta ? 'marcada-certa' : 'marcada-errada') : '',
                 ].join(' ')}
-                disabled={!visivel || marcada}
+                disabled={!visivel || encerrada}
                 onClick={() => onMarcar(posicao)}
               >
                 <span className="opcao-letra">{LETRAS[posicao]}</span>
@@ -318,10 +427,13 @@ interface BotoesProps {
 
 function BotoesAcao({ estado, automatico, pausado, podeDesfazer, acoes, onPausar, onDesfazer }: BotoesProps) {
   const emPergunta = estado.fase === 'pergunta'
-  const marcada = respondida(estado)
-  const faltamOpcoes = emPergunta && !marcada && estado.opcoesVisiveis < estado.ordem.length
+  const encerrada = respondida(estado)
+  const faltamOpcoes = emPergunta && !encerrada && estado.opcoesVisiveis < estado.ordem.length
+  const contando = emPergunta && !encerrada && estado.cronometro
   const textoProxima =
-    estado.fase === 'fimRodada' ? `▶ Começar rodada ${estado.rodada + 1}` : '▶ Próxima pergunta'
+    estado.fase === 'fimRodada'
+      ? `▶ Começar rodada ${estado.rodada + 1}`
+      : `▶ Próxima pergunta (${EQUIPES[estado.proximaEquipe].nome})`
 
   return (
     <div className="acoes">
@@ -335,18 +447,23 @@ function BotoesAcao({ estado, automatico, pausado, podeDesfazer, acoes, onPausar
       >
         {textoProxima} <kbd>Enter</kbd>
       </button>
-      {automatico && emPergunta && !marcada && (
+      {contando && (
+        <button onClick={onPausar}>
+          {estado.cronometro!.fim == null ? '▶ Retomar tempo' : '⏸ Pausar tempo'} <kbd>P</kbd>
+        </button>
+      )}
+      {automatico && faltamOpcoes && (
         <button onClick={onPausar}>
           {pausado ? '▶ Retomar automático' : '⏸ Pausar automático'} <kbd>P</kbd>
         </button>
       )}
-      {marcada && !estado.mostrarCorreta && (
+      {encerrada && !estado.mostrarCorreta && (
         <button onClick={acoes.revelarCorreta} title="Mostra a resposta certa e tira a pergunta da próxima rodada">
           Mostrar resposta certa <kbd>R</kbd>
         </button>
       )}
-      {emPergunta && !marcada && (
-        <button onClick={acoes.pular} title="Devolve a pergunta para o fim da fila">
+      {emPergunta && !encerrada && (
+        <button onClick={acoes.pular} title="Devolve a pergunta para o fim da fila; a mesma equipe recebe outra">
           ⤼ Pular pergunta
         </button>
       )}
@@ -358,7 +475,6 @@ function BotoesAcao({ estado, automatico, pausado, podeDesfazer, acoes, onPausar
 }
 
 function Resumo({ estado }: { estado: EstadoJogo }) {
-  const restantes = estado.fila.length
   return (
     <div className="resumo">
       <div>
@@ -366,7 +482,7 @@ function Resumo({ estado }: { estado: EstadoJogo }) {
         <span>rodada</span>
       </div>
       <div>
-        <strong>{restantes}</strong>
+        <strong>{estado.fila.length}</strong>
         <span>restantes na rodada</span>
       </div>
       <div>
@@ -386,12 +502,12 @@ function Atalhos() {
     <details className="atalhos">
       <summary>Atalhos de teclado</summary>
       <ul>
-        <li><kbd>Enter</kbd> ou <kbd>N</kbd> próxima pergunta</li>
+        <li><kbd>Enter</kbd> ou <kbd>N</kbd> próxima pergunta (vai para a próxima equipe)</li>
         <li><kbd>Espaço</kbd> ou <kbd>→</kbd> próxima opção</li>
         <li><kbd>A</kbd>–<kbd>D</kbd> ou <kbd>1</kbd>–<kbd>4</kbd> marcar a resposta</li>
+        <li><kbd>P</kbd> pausar/retomar o tempo (ou o modo automático)</li>
         <li><kbd>R</kbd> mostrar resposta certa (quando ficou para a próxima rodada)</li>
-        <li><kbd>P</kbd> pausar/retomar o modo automático</li>
-        <li><kbd>Backspace</kbd> ou <kbd>Ctrl+Z</kbd> desfazer</li>
+        <li><kbd>Backspace</kbd> ou <kbd>Ctrl+Z</kbd> desfazer (desfaz pontos também)</li>
         <li><kbd>Esc</kbd> sair da tela única</li>
       </ul>
     </details>
@@ -410,3 +526,4 @@ function TelaUnica({ children, barra, onSair }: { children: ReactNode; barra: Re
     </div>
   )
 }
+

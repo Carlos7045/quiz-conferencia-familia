@@ -918,3 +918,221 @@ kbd {
   font-size: 14px;
   padding: 6px 12px;
 }
+
+/* ===================== EQUIPES E CONTAGEM ===================== */
+
+/* faixa no topo com a cor da equipe da vez */
+.tela.com-equipe::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1cqh;
+  background: var(--cor-equipe);
+  z-index: 2;
+}
+.tela-topo-direita {
+  display: flex;
+  align-items: center;
+  gap: 1cqw;
+}
+.tela-equipe {
+  font-size: min(2.9cqh, 1.7cqw);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--cor-equipe);
+  color: var(--texto-equipe);
+  padding: 0.42em 1.3em;
+  border-radius: 999px;
+  box-shadow: 0 0.4cqh 1.5cqh #41222a40;
+  animation: destacar 0.9s ease-out;
+}
+
+.contagem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9em;
+  font-size: min(3.4cqh, 2cqw);
+  padding: 0.3em 1.5em 0.3em 0.35em;
+  border-radius: 999px;
+  background: var(--grafite);
+  color: var(--creme);
+  box-shadow: 0 0.6cqh 2cqh #41222a40;
+  animation: surgir 0.4s ease-out;
+}
+.contagem-relogio {
+  position: relative;
+  width: 2.5em;
+  height: 2.5em;
+  flex: none;
+}
+.contagem-anel {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+.contagem-anel circle {
+  fill: none;
+  stroke-width: 3.4;
+}
+.contagem-trilho {
+  stroke: #ffffff22;
+}
+.contagem-progresso {
+  stroke: var(--terracota-claro);
+  stroke-linecap: round;
+  transition: stroke-dasharray 0.1s linear, stroke 0.3s;
+}
+.contagem-numero {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 1.15em;
+}
+.contagem-rotulo {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.contagem.urgente .contagem-progresso {
+  stroke: #ff6b5b;
+}
+.contagem.urgente .contagem-numero {
+  color: #ff9a8e;
+  animation: bater 0.5s ease-out;
+}
+.contagem.urgente {
+  box-shadow: 0 0 0 0.35cqh #ff6b5b88, 0 0.6cqh 2cqh #41222a40;
+}
+.contagem.pausada {
+  opacity: 0.75;
+}
+.contagem.compacta {
+  font-size: 15px;
+  padding: 2px;
+  gap: 0;
+  margin-left: auto;
+  box-shadow: none;
+}
+
+@keyframes destacar {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.12);
+    opacity: 1;
+  }
+  100% {
+    transform: none;
+  }
+}
+@keyframes bater {
+  0% {
+    transform: scale(1.45);
+  }
+  100% {
+    transform: none;
+  }
+}
+
+/* ---- placar (somente no painel do operador) ---- */
+.placar {
+  background: #fff;
+  border: 1px solid #ecd0c3;
+  border-radius: 16px;
+  padding: 12px 14px 14px;
+  box-shadow: 0 4px 18px #c25f4214;
+}
+.placar-titulo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4px 10px;
+  margin-bottom: 10px;
+}
+.placar-titulo strong {
+  font-size: 17px;
+  color: var(--terracota);
+}
+.placar-titulo span {
+  font-size: 12px;
+  color: #7a5a4e;
+}
+.placar-equipes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+.placar-equipe,
+.placar-equipe:hover:not(:disabled) {
+  background: var(--cor-equipe);
+  color: var(--texto-equipe);
+}
+.placar-equipe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 4px 6px;
+  border-radius: 14px;
+  border: 3px solid transparent;
+  opacity: 0.8;
+}
+.placar-equipe:hover:not(:disabled) {
+  opacity: 1;
+}
+.placar-equipe.da-vez {
+  opacity: 1;
+  border-color: var(--marrom);
+  box-shadow: 0 6px 16px #41222a40;
+}
+.placar-nome {
+  font-size: 14px;
+  font-weight: 800;
+}
+.placar-pontos {
+  font-family: var(--fonte-titulo);
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1;
+}
+.placar-marca {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  min-height: 1.2em;
+}
+
+.operador-cabecalho {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+.operador-equipe {
+  background: var(--cor-equipe);
+  color: var(--texto-equipe);
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 3px 12px;
+  border-radius: 999px;
+}
+.operador-dica.acerto {
+  color: var(--verde);
+  font-weight: 700;
+}
+.operador-dica.erro,
+.operador-dica.tempo {
+  color: var(--vermelho);
+  font-weight: 700;
+}

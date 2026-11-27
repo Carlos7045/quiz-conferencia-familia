@@ -1,3 +1,4 @@
+import { normalizarEstado } from './jogo'
 import type { Config, EstadoJogo, Mensagem } from './tipos'
 
 export const CONFIG_PADRAO: Config = {
@@ -6,6 +7,9 @@ export const CONFIG_PADRAO: Config = {
   segundosEntreOpcoes: 3,
   aoErrar: 'mostrarCorreta',
   embaralharOpcoes: true,
+  pontosPorPergunta: 10,
+  cronometroAtivo: true,
+  segundosResposta: 30,
   somAtivo: true,
   volume: 0.7,
 }
@@ -24,7 +28,10 @@ function ler<T>(chave: string): T | null {
 
 export const carregarConfig = (): Config => ({ ...CONFIG_PADRAO, ...ler<Partial<Config>>(CHAVE_CONFIG) })
 export const salvarConfig = (c: Config) => localStorage.setItem(CHAVE_CONFIG, JSON.stringify(c))
-export const carregarEstado = () => ler<EstadoJogo>(CHAVE_ESTADO)
+export function carregarEstado(): EstadoJogo | null {
+  const salvo = ler<Partial<EstadoJogo>>(CHAVE_ESTADO)
+  return salvo ? normalizarEstado(salvo) : null
+}
 export const salvarEstado = (e: EstadoJogo) => localStorage.setItem(CHAVE_ESTADO, JSON.stringify(e))
 
 /** Canal entre a janela de controle e a janela do telão (mesmo navegador). */

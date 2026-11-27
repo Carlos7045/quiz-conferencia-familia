@@ -1,6 +1,6 @@
-import { useLayoutEffect, useRef, type ReactNode } from 'react'
-import { acertou, buscarPergunta } from '../jogo'
-import type { Config, EstadoJogo, Pergunta } from '../tipos'
+import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react'
+import { EQUIPES, buscarPergunta, restanteMs } from '../jogo'
+import type { Config, Cronometro, EstadoJogo, Pergunta } from '../tipos'
 import { Chama, IGREJA, Logo } from './Logo'
 
 export const LETRAS = ['A', 'B', 'C', 'D', 'E', 'F']
@@ -15,8 +15,10 @@ interface Props {
 /** Tela exibida para o público. Usa unidades de container, então funciona em qualquer tamanho. */
 export function Tela({ estado, config, onEscolher }: Props) {
   const emPergunta = estado.fase === 'pergunta'
+  const equipe = EQUIPES[estado.equipe]
+  const estilo = { '--cor-equipe': equipe.cor, '--texto-equipe': equipe.texto } as CSSProperties
   return (
-    <div className="tela">
+    <div className={`tela ${emPergunta ? 'com-equipe' : ''}`} style={estilo}>
       <Fundo />
       {emPergunta && (
         <header className="tela-topo">
@@ -24,9 +26,14 @@ export function Tela({ estado, config, onEscolher }: Props) {
             <Chama />
             <Logo compacto />
           </div>
-          <span className="tela-contagem">
-            Rodada {estado.rodada} · Pergunta {estado.contador}
-          </span>
+          <div className="tela-topo-direita">
+            <span className="tela-equipe" key={`${estado.contador}-${estado.equipe}`}>
+              Equipe {equipe.nome}
+            </span>
+            <span className="tela-contagem">
+              Rodada {estado.rodada} · Pergunta {estado.contador}
+            </span>
+          </div>
         </header>
       )}
       <main className="tela-corpo">
@@ -102,10 +109,10 @@ function Conteudo({ estado, config, onEscolher }: Props) {
   )
 }
 
-function PerguntaNaTela({ pergunta, estado, config, onEscolher }: Props & { pergunta: Pergunta }) {
-  const marcada = estado.escolhida !== null
-  const ref = useAjustarTexto(`${marcada}-${estado.mostrarCorreta}`)
-  const certo = acertou(estado)
+function PerguntaNaTela({ pergunta, estado, onEscolher }: Props & { pergunta: Pergunta }) {
+  const encerrada = estado.resultado !== null
+  const ref = useAjustarTexto(`${encerrada}-${estado.mostrarCorreta}`)
+  const certo = estado.resultado === 'acerto'
 
   return (
     <div className="tela-pergunta" ref={ref}>
@@ -117,12 +124,12 @@ function PerguntaNaTela({ pergunta, estado, config, onEscolher }: Props & { perg
           const eCorreta = indice === pergunta.correta
           const eEscolhida = indice === estado.escolhida
           let estadoOpcao = ''
-          if (marcada) {
+          if (encerrada) {
             if (eEscolhida) estadoOpcao = certo ? 'certa' : 'errada'
             else if (eCorreta && estado.mostrarCorreta) estadoOpcao = 'certa revelada'
             else estadoOpcao = 'apagada'
           }
-          const clicavel = !!onEscolher && visivel && !marcada
+          const clicavel = !!onEscolher && visivel && !encerrada
           return (
             <li
               key={indice}
@@ -140,21 +147,74 @@ function PerguntaNaTela({ pergunta, estado, config, onEscolher }: Props & { perg
       </ol>
 
       <div className="tela-rodape">
-        {marcada && estado.mostrarCorreta && (
-          <div className={`referencia ${certo ? 'ok' : 'nok'}`}>
-            <span className="referencia-titulo">{certo ? 'Resposta certa!' : 'Resposta correta'}</span>
-            <span className="referencia-texto">📜 {pergunta.referencia}</span>
-          </div>
-        )}
-        {marcada && !estado.mostrarCorreta && config.aoErrar === 'proximaRodada' && (
-          <div className="referencia nok">
-            <span className="referencia-titulo">Resposta errada</span>
-            <span className="referencia-texto">Esta pergunta volta na próxima rodada</span>
-          </div>
-        )}
+        {!encerrada && estado.cronometro && <Contagem cronometro={estado.cronometro} />}
+        {encerrada && <Resultado estado={estado} pergunta={pergunta} />}
       </div>
     </div>
   )
+}
+
+function Resultado({ estado, pergunta }: { estado: EstadoJogo; pergunta: Pergunta }) {
+  const certo = estado.resultado === 'acerto'
+  const tempo = estado.resultado === 'tempo'
+  if (estado.mostrarCorreta) {
+    const titulo = certo ? 'Resposta certa!' : tempo ? '⏰ Tempo esgotado!' : 'Resposta correta'
+    return (
+      <div className={`referencia ${certo ? 'ok' : 'nok'}`}>
+        <span className="referencia-titulo">{titulo}</span>
+        <span className="referencia-texto">📜 {pergunta.referencia}</span>
+      </div>
+    )
+  }
+  return (
+    <div className="referencia nok">
+      <span className="referencia-titulo">{tempo ? '⏰ Tempo esgotado!' : 'Resposta errada'}</span>
+      <span className="referencia-texto">Esta pergunta volta na próxima rodada</span>
+    </div>
+  )
+}
+
+/** Contagem regressiva com anel de progresso. Fica vermelha nos últimos 10 segundos. */
+export function Contagem({ cronometro, compacta = false }: { cronometro: Cronometro; compacta?: boolean }) {
+  const rodando = cronometro.fim != null
+  const agora = useAgora(rodando)
+  const ms = restanteMs(cronometro, agora)
+  const segundos = Math.ceil(ms / 1000)
+  const fracao = cronometro.totalMs > 0 ? ms / cronometro.totalMs : 0
+  const urgente = segundos <= 10
+  return (
+    <div className={`contagem ${urgente ? 'urgente' : ''} ${rodando ? '' : 'pausada'} ${compacta ? 'compacta' : ''}`}>
+      <div className="contagem-relogio">
+        <svg className="contagem-anel" viewBox="0 0 36 36" aria-hidden="true">
+          <circle cx="18" cy="18" r="15.5" className="contagem-trilho" />
+          <circle
+            cx="18"
+            cy="18"
+            r="15.5"
+            className="contagem-progresso"
+            pathLength={100}
+            strokeDasharray={`${fracao * 100} 100`}
+          />
+        </svg>
+        <span className="contagem-numero" key={urgente ? segundos : 'n'}>
+          {segundos}
+        </span>
+      </div>
+      {!compacta && <span className="contagem-rotulo">{rodando ? 'segundos para responder' : 'tempo pausado'}</span>}
+    </div>
+  )
+}
+
+/** Re-renderiza a cada 100 ms enquanto `ativo` for verdadeiro. */
+function useAgora(ativo: boolean) {
+  const [agora, setAgora] = useState(() => Date.now())
+  useEffect(() => {
+    if (!ativo) return
+    setAgora(Date.now())
+    const t = setInterval(() => setAgora(Date.now()), 100)
+    return () => clearInterval(t)
+  }, [ativo])
+  return agora
 }
 
 /**

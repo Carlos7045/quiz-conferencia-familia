@@ -1,4 +1,4 @@
-import { tocar, type NomeSom } from '../sons'
+import { iniciarSuspense, pararSuspense, tocar, type NomeSom } from '../sons'
 import type { Config } from '../tipos'
 
 interface Props {
@@ -13,6 +13,7 @@ const SONS: [NomeSom, string][] = [
   ['opcao', 'Opção'],
   ['acerto', 'Acerto'],
   ['erro', 'Erro'],
+  ['tempo', 'Tempo esgotado'],
 ]
 
 export function Configuracoes({ config, onMudar, onFechar, onReiniciar }: Props) {
@@ -52,7 +53,46 @@ export function Configuracoes({ config, onMudar, onFechar, onReiniciar }: Props)
         </fieldset>
 
         <fieldset>
-          <legend>Quando a pessoa errar</legend>
+          <legend>Equipes e tempo</legend>
+          <label>
+            Pontos por pergunta certa
+            <span className="numero-segundos">
+              <input
+                type="number"
+                min={1}
+                max={1000}
+                value={config.pontosPorPergunta}
+                onChange={(e) =>
+                  mudar('pontosPorPergunta', Math.min(1000, Math.max(1, Math.round(Number(e.target.value)) || 1)))
+                }
+              />
+              pontos
+            </span>
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              checked={config.cronometroAtivo}
+              onChange={(e) => mudar('cronometroAtivo', e.target.checked)}
+            />
+            Contagem regressiva depois da última opção, com som de suspense
+          </label>
+          {config.cronometroAtivo && (
+            <div className="linha-numeros">
+              <label>
+                Tempo para responder
+                <NumeroSegundos
+                  valor={config.segundosResposta}
+                  max={300}
+                  onMudar={(v) => mudar('segundosResposta', v)}
+                />
+              </label>
+            </div>
+          )}
+        </fieldset>
+
+        <fieldset>
+          <legend>Quando a equipe errar ou o tempo acabar</legend>
           <label>
             <input
               type="radio"
@@ -108,12 +148,16 @@ export function Configuracoes({ config, onMudar, onFechar, onReiniciar }: Props)
                 🔊 {rotulo}
               </button>
             ))}
+            <button onClick={() => iniciarSuspense(5000)} disabled={!config.somAtivo}>
+              🔊 Suspense
+            </button>
+            <button onClick={pararSuspense}>⏹ Parar</button>
           </div>
         </fieldset>
 
         <footer>
           <button className="perigo" onClick={onReiniciar}>
-            ↺ Reiniciar jogo (todas as perguntas voltam)
+            ↺ Reiniciar jogo (perguntas voltam e placar zera)
           </button>
           <button className="primario" onClick={onFechar}>
             Pronto
@@ -124,15 +168,15 @@ export function Configuracoes({ config, onMudar, onFechar, onReiniciar }: Props)
   )
 }
 
-function NumeroSegundos({ valor, onMudar }: { valor: number; onMudar: (v: number) => void }) {
+function NumeroSegundos({ valor, max = 60, onMudar }: { valor: number; max?: number; onMudar: (v: number) => void }) {
   return (
     <span className="numero-segundos">
       <input
         type="number"
         min={1}
-        max={60}
+        max={max}
         value={valor}
-        onChange={(e) => onMudar(Math.min(60, Math.max(1, Number(e.target.value) || 1)))}
+        onChange={(e) => onMudar(Math.min(max, Math.max(1, Math.round(Number(e.target.value)) || 1)))}
       />
       s
     </span>

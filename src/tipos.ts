@@ -9,6 +9,19 @@ export interface Pergunta {
 
 export type Fase = 'inicio' | 'pergunta' | 'fimRodada' | 'fim'
 
+/** Como terminou a pergunta atual (null = ainda em andamento) */
+export type Resultado = 'acerto' | 'erro' | 'tempo' | null
+
+/**
+ * Contagem regressiva para responder.
+ * Rodando: `fim` é o horário (Date.now) em que acaba. Pausada: `fim` é null e vale `restanteMs`.
+ */
+export interface Cronometro {
+  fim: number | null
+  restanteMs: number
+  totalMs: number
+}
+
 export interface EstadoJogo {
   fase: Fase
   rodada: number
@@ -24,8 +37,16 @@ export interface EstadoJogo {
   opcoesVisiveis: number
   /** Índice original da opção marcada, ou null */
   escolhida: number | null
+  resultado: Resultado
   /** Se a resposta certa deve aparecer (acertou ou config "mostrar correta") */
   mostrarCorreta: boolean
+  /** Equipe que responde a pergunta atual (índice em EQUIPES) */
+  equipe: number
+  /** Equipe que recebe a próxima pergunta sorteada */
+  proximaEquipe: number
+  /** Pontos de cada equipe (mesma ordem de EQUIPES) */
+  placar: number[]
+  cronometro: Cronometro | null
 }
 
 export interface Config {
@@ -36,6 +57,10 @@ export interface Config {
   segundosEntreOpcoes: number
   aoErrar: 'mostrarCorreta' | 'proximaRodada'
   embaralharOpcoes: boolean
+  pontosPorPergunta: number
+  /** Contagem regressiva depois que a última opção aparece */
+  cronometroAtivo: boolean
+  segundosResposta: number
   somAtivo: boolean
   volume: number
 }
