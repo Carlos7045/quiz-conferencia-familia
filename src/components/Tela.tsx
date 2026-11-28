@@ -129,8 +129,10 @@ function PerguntaNaTela({ pergunta, estado, onEscolher }: Props & { pergunta: Pe
   const encerrada = estado.resultado !== null
   const ref = useAjustarTexto(`${encerrada}-${estado.mostrarCorreta}`)
   const certo = estado.resultado === 'acerto'
+  const faixa = useFaixaSobreApagada(encerrada)
 
   return (
+    <>
     <div className="tela-pergunta" ref={ref}>
       <h2 className="pergunta-texto">{pergunta.pergunta}</h2>
 
@@ -162,11 +164,14 @@ function PerguntaNaTela({ pergunta, estado, onEscolher }: Props & { pergunta: Pe
         })}
       </ol>
 
-      <div className="tela-rodape">
-        {!encerrada && estado.cronometro && <Contagem cronometro={estado.cronometro} />}
-        {encerrada && <Resultado estado={estado} pergunta={pergunta} />}
-      </div>
     </div>
+    {!encerrada && estado.cronometro && <Contagem cronometro={estado.cronometro} flutuante />}
+    {encerrada && (
+      <div className="resultado-flutuante" ref={faixa}>
+        <Resultado estado={estado} pergunta={pergunta} />
+      </div>
+    )}
+    </>
   )
 }
 
@@ -190,14 +195,47 @@ function Resultado({ estado, pergunta }: { estado: EstadoJogo; pergunta: Pergunt
   )
 }
 
-/** Contagem regressiva com anel de progresso. Fica vermelha nos últimos 10 segundos. */
-export function Contagem({ cronometro, compacta = false }: { cronometro: Cronometro; compacta?: boolean }) {
+/**
+ * Contagem regressiva com anel de progresso. Fica vermelha nos últimos 10 segundos.
+ * `flutuante`: círculo grande e meio transparente por cima das opções (telão).
+ * `compacta`: só o número com o anel (painel do operador).
+ */
+export function Contagem({
+  cronometro,
+  compacta = false,
+  flutuante = false,
+}: {
+  cronometro: Cronometro
+  compacta?: boolean
+  flutuante?: boolean
+}) {
   const rodando = cronometro.fim != null
   const agora = useAgora(rodando)
   const ms = restanteMs(cronometro, agora)
   const segundos = Math.ceil(ms / 1000)
   const fracao = cronometro.totalMs > 0 ? ms / cronometro.totalMs : 0
   const urgente = segundos <= 10
+  if (flutuante) {
+    return (
+      <div className={`contagem-flutuante ${urgente ? 'urgente' : ''} ${rodando ? '' : 'pausada'}`}>
+        <svg className="contagem-anel" viewBox="0 0 36 36" aria-hidden="true">
+          <circle cx="18" cy="18" r="16" className="contagem-trilho" />
+          <circle
+            cx="18"
+            cy="18"
+            r="16"
+            className="contagem-progresso"
+            pathLength={100}
+            strokeDasharray={`${fracao * 100} 100`}
+          />
+        </svg>
+        <span className="contagem-flutuante-numero" key={urgente ? segundos : 'n'}>
+          {segundos}
+        </span>
+        <span className="contagem-flutuante-rotulo">{rodando ? 'segundos' : 'pausado'}</span>
+      </div>
+    )
+  }
   return (
     <div className={`contagem ${urgente ? 'urgente' : ''} ${rodando ? '' : 'pausada'} ${compacta ? 'compacta' : ''}`}>
       <div className="contagem-relogio">
@@ -221,6 +259,30 @@ export function Contagem({ cronometro, compacta = false }: { cronometro: Cronome
   )
 }
 
+/**
+ * Põe a faixa da referência centralizada sobre a opção apagada mais de baixo
+ * (sempre sobram pelo menos duas), para nunca cobrir a pergunta, a certa ou a marcada.
+ */
+function useFaixaSobreApagada(ativo: boolean) {
+  const ref = useRef<HTMLDivElement>(null)
+  useLayoutEffect(() => {
+    const faixa = ref.current
+    if (!ativo || !faixa) return
+    const posicionar = () => {
+      const apagadas = faixa.parentElement?.querySelectorAll<HTMLElement>('.opcao.apagada')
+      const alvo = apagadas?.[apagadas.length - 1]
+      if (!alvo) return
+      faixa.style.top = `${alvo.offsetTop + alvo.offsetHeight / 2}px`
+    }
+    posicionar()
+    const observador = new ResizeObserver(posicionar)
+    observador.observe(faixa.parentElement!)
+    void document.fonts.ready.then(posicionar)
+    return () => observador.disconnect()
+  }, [ativo])
+  return ref
+}
+
 /** Re-renderiza a cada 100 ms enquanto `ativo` for verdadeiro. */
 function useAgora(ativo: boolean) {
   const [agora, setAgora] = useState(() => Date.now())
@@ -234,21 +296,38 @@ function useAgora(ativo: boolean) {
 }
 
 /**
- * Diminui a fonte (variável CSS --escala) até a pergunta, as 4 opções e o espaço
- * da referência caberem na tela. Recalcula quando a tela muda de tamanho.
- * Como as opções ocultas já ocupam espaço, o tamanho fica fixo durante a pergunta.
+ * Diminui as letras até a pergunta, as 4 opções e o espaço da referência caberem na tela.
+ * Pergunta e opções têm escalas separadas (--escala-pergunta / --escala-opcao): diminui
+ * primeiro quem está ocupando mais espaço, assim um texto longo não encolhe o resto.
+ * Recalcula quando a tela muda de tamanho. Como as opções ocultas já ocupam espaço,
+ * o tamanho fica fixo durante a pergunta.
  */
 function useAjustarTexto(chave: string) {
   const ref = useRef<HTMLDivElement>(null)
   useLayoutEffect(() => {
     const el = ref.current
     if (!el) return
+    const MIN = 0.4
+    const PASSO = 0.03
     const ajustar = () => {
-      let escala = 1
-      el.style.setProperty('--escala', '1')
-      while (escala > 0.4 && el.scrollHeight > el.clientHeight + 1) {
-        escala -= 0.04
-        el.style.setProperty('--escala', escala.toFixed(2))
+      const pergunta = el.querySelector<HTMLElement>('.pergunta-texto')
+      const opcoes = el.querySelector<HTMLElement>('.opcoes')
+      if (!pergunta || !opcoes) return
+      let ep = 1
+      let eo = 1
+      const aplicar = () => {
+        el.style.setProperty('--escala-pergunta', ep.toFixed(2))
+        el.style.setProperty('--escala-opcao', eo.toFixed(2))
+      }
+      aplicar()
+      while (el.scrollHeight > el.clientHeight + 1 && (ep > MIN || eo > MIN)) {
+        // A pergunta pode ocupar até ~30% da altura usada; acima disso, ela diminui primeiro.
+        const hp = pergunta.offsetHeight
+        const ho = opcoes.offsetHeight
+        const perguntaGrande = hp / (hp + ho) > 0.3
+        if ((perguntaGrande && ep > MIN) || eo <= MIN) ep = Math.max(MIN, ep - PASSO)
+        else eo = Math.max(MIN, eo - PASSO)
+        aplicar()
       }
     }
     ajustar()

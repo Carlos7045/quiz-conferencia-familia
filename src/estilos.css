@@ -232,20 +232,20 @@ kbd {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2cqh 3cqw 0;
+  padding: 1.4cqh 2.2cqw 0;
 }
 .tela-marca {
   display: flex;
   align-items: center;
   gap: 0.8cqw;
-  font-size: min(3.6cqh, 2.1cqw);
+  font-size: min(3.4cqh, 2cqw);
 }
 .tela-marca .chama {
   height: 1.9em;
 }
 .tela-contagem {
-  font-size: min(2.6cqh, 1.5cqw);
-  font-weight: 600;
+  font-size: min(3.2cqh, 1.9cqw);
+  font-weight: 700;
   color: var(--creme);
   background: var(--grafite);
   padding: 0.45em 1.2em;
@@ -257,7 +257,7 @@ kbd {
   flex: 1;
   display: flex;
   min-height: 0;
-  padding: 2cqh 4cqw 3cqh;
+  padding: 1.4cqh 2.2cqw 1.6cqh;
 }
 
 /* ---- telas de aviso (início, fim de rodada, fim) ---- */
@@ -311,25 +311,25 @@ kbd {
 
 /* ---- pergunta ---- */
 .tela-pergunta {
-  --fonte-pergunta: calc(min(4.8cqh, 2.9cqw) * var(--escala, 1));
-  --fonte-opcao: calc(min(3.7cqh, 2.2cqw) * var(--escala, 1));
+  --fonte-pergunta: calc(min(6.8cqh, 4cqw) * var(--escala-pergunta, 1));
+  --fonte-opcao: calc(min(5.6cqh, 3.3cqw) * var(--escala-opcao, 1));
   width: 100%;
   height: 100%;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 2cqh;
+  gap: 1.4cqh;
 }
 
 .pergunta-texto {
   flex: none;
   margin: 0;
   font-size: var(--fonte-pergunta);
-  line-height: 1.28;
+  line-height: 1.2;
   font-weight: 700;
   text-align: center;
   color: var(--creme);
-  padding: 0.65em 1.2em;
+  padding: 0.45em 0.8em;
   background: linear-gradient(180deg, #4a423d, var(--grafite));
   border-radius: 0.8em;
   box-shadow: 0 0.35em 1.2em #41222a40;
@@ -340,10 +340,10 @@ kbd {
   flex: none;
   list-style: none;
   margin: 0;
-  padding: 0 0.6cqw;
+  padding: 0 0.4cqw;
   display: flex;
   flex-direction: column;
-  gap: 1.5cqh;
+  gap: 1.1cqh;
 }
 
 .opcao {
@@ -351,9 +351,9 @@ kbd {
   align-items: center;
   gap: 0.8em;
   font-size: var(--fonte-opcao);
-  line-height: 1.25;
-  font-weight: 600;
-  padding: 0.5em 0.9em 0.5em 0.6em;
+  line-height: 1.16;
+  font-weight: 700;
+  padding: 0.32em 0.8em 0.32em 0.4em;
   border-radius: 999px;
   background: #fffaf7e6;
   border: 2px solid #ecc2b0;
@@ -380,8 +380,8 @@ kbd {
   flex: none;
   display: grid;
   place-items: center;
-  width: 1.9em;
-  height: 1.9em;
+  width: 1.7em;
+  height: 1.7em;
   border-radius: 50%;
   background: var(--terracota);
   color: #fff;
@@ -427,19 +427,12 @@ kbd {
   opacity: 0.4;
 }
 
-.tela-rodape {
-  flex: none;
-  height: 11cqh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-}
 .referencia {
   display: flex;
   align-items: center;
   gap: 1em;
-  font-size: min(3.5cqh, 2.1cqw);
-  padding: 0.4em 1.4em;
+  font-size: min(4.8cqh, 2.9cqw);
+  padding: 0.3em 1.3em;
   border-radius: 999px;
   background: var(--grafite);
   color: var(--creme);
@@ -938,7 +931,7 @@ kbd {
   gap: 1cqw;
 }
 .tela-equipe {
-  font-size: min(2.9cqh, 1.7cqw);
+  font-size: min(3.6cqh, 2.1cqw);
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -953,9 +946,9 @@ kbd {
 .contagem {
   display: inline-flex;
   align-items: center;
-  gap: 0.9em;
-  font-size: min(3.4cqh, 2cqw);
-  padding: 0.3em 1.5em 0.3em 0.35em;
+  gap: 0.8em;
+  font-size: min(4.2cqh, 2.5cqw);
+  padding: 0.15em 1.4em 0.15em 0.15em;
   border-radius: 999px;
   background: var(--grafite);
   color: var(--creme);
@@ -1196,4 +1189,115 @@ kbd {
   border-radius: 14px;
   padding: 10px 14px;
   font-weight: 600;
+}
+
+/* ===================== ELEMENTOS FLUTUANTES (por cima da pergunta) ===================== */
+
+/* contagem regressiva: círculo meio transparente no canto inferior direito */
+.contagem-flutuante {
+  position: absolute;
+  right: 1.6cqw;
+  bottom: 1.6cqh;
+  z-index: 5;
+  width: 24cqh;
+  height: 24cqh;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #413b37a6;
+  color: #fffaf6;
+  box-shadow: 0 1cqh 4cqh #41222a40;
+  pointer-events: none;
+  animation: surgir-flutuante 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.25);
+}
+.contagem-flutuante .contagem-anel {
+  position: absolute;
+  inset: 1.2cqh;
+  width: auto;
+  height: auto;
+}
+.contagem-flutuante .contagem-anel circle {
+  stroke-width: 2.6;
+}
+.contagem-flutuante .contagem-trilho {
+  stroke: #ffffff30;
+}
+.contagem-flutuante-numero {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 10cqh;
+  line-height: 1;
+  text-shadow: 0 0.3cqh 1cqh #0006;
+}
+.contagem-flutuante-rotulo {
+  font-size: 1.7cqh;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+.contagem-flutuante.urgente {
+  background: #b92c22b8;
+  animation: pulsar-urgente 1s ease-in-out infinite;
+}
+.contagem-flutuante.urgente .contagem-progresso {
+  stroke: #ffd2cc;
+}
+.contagem-flutuante.urgente .contagem-flutuante-numero {
+  animation: bater 0.5s ease-out;
+}
+.contagem-flutuante.pausada {
+  background: #413b3780;
+}
+
+/* faixa com o resultado e a referência bíblica */
+.resultado-flutuante {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 5;
+  transform: translate(-50%, -50%);
+  max-width: 92%;
+  pointer-events: none;
+  animation: subir-faixa 0.55s cubic-bezier(0.2, 0.9, 0.3, 1.2) 0.35s both;
+}
+.resultado-flutuante .referencia {
+  animation: none;
+  font-size: min(4.6cqh, 2.7cqw);
+  padding: 0.3em 1.4em;
+  white-space: nowrap;
+  background: var(--grafite);
+  box-shadow: 0 1.2cqh 4cqh #41222a66;
+}
+
+@keyframes surgir-flutuante {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes pulsar-urgente {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 #ff6b5b99, 0 1cqh 4cqh #41222a40;
+  }
+  50% {
+    box-shadow: 0 0 0 1.6cqh #ff6b5b00, 0 1cqh 4cqh #41222a40;
+  }
+}
+@keyframes subir-faixa {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
 }
