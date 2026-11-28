@@ -42,6 +42,7 @@ export function estadoInicial(): EstadoJogo {
     proximaEquipe: 0,
     placar: EQUIPES.map(() => 0),
     cronometro: null,
+    placarNoTelao: false,
   }
 }
 
@@ -109,6 +110,7 @@ export function sortear(e: EstadoJogo, config: Config): EstadoJogo {
     equipe: e.proximaEquipe,
     proximaEquipe: (e.proximaEquipe + 1) % EQUIPES.length,
     cronometro: null,
+    placarNoTelao: false,
   }
 }
 
@@ -190,6 +192,23 @@ export function pular(e: EstadoJogo): EstadoJogo {
     proximaEquipe: e.equipe,
     cronometro: null,
   }
+}
+
+/**
+ * O placar pode ir para o telão entre as perguntas ou depois da resposta,
+ * nunca com uma pergunta em andamento (cobriria a pergunta e o tempo).
+ */
+export const podeMostrarPlacar = (e: EstadoJogo) => e.fase !== 'pergunta' || e.resultado !== null
+
+export function alternarPlacarTelao(e: EstadoJogo): EstadoJogo {
+  if (!e.placarNoTelao && !podeMostrarPlacar(e)) return e
+  return { ...e, placarNoTelao: !e.placarNoTelao }
+}
+
+/** Posição de cada equipe (empates ficam na mesma posição), da maior para a menor pontuação. */
+export function classificacao(placar: number[]) {
+  const ordem = EQUIPES.map((_, i) => i).sort((a, b) => placar[b] - placar[a] || a - b)
+  return ordem.map((indice) => ({ indice, pontos: placar[indice], posicao: 1 + placar.filter((p) => p > placar[indice]).length }))
 }
 
 /** Escolhe a equipe da vez (a da pergunta em andamento ou a da próxima pergunta). */

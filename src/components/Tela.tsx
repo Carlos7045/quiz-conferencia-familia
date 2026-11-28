@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react'
-import { EQUIPES, buscarPergunta, restanteMs } from '../jogo'
+import { EQUIPES, buscarPergunta, classificacao, restanteMs } from '../jogo'
 import type { Config, Cronometro, EstadoJogo, Pergunta } from '../tipos'
 import { Chama, IGREJA, Logo } from './Logo'
 
@@ -39,6 +39,54 @@ export function Tela({ estado, config, onEscolher }: Props) {
       <main className="tela-corpo">
         <Conteudo estado={estado} config={config} onEscolher={onEscolher} />
       </main>
+      {estado.placarNoTelao && <PlacarTelao estado={estado} />}
+    </div>
+  )
+}
+
+/** Placar em tela cheia, por cima de tudo, com as equipes em ordem de pontos. */
+function PlacarTelao({ estado }: { estado: EstadoJogo }) {
+  const linhas = classificacao(estado.placar)
+  const maximo = Math.max(1, ...estado.placar)
+  const final = estado.fase === 'fim'
+  return (
+    <div className="placar-telao">
+      <Fundo />
+      <div className="placar-telao-conteudo">
+        <div className="placar-telao-topo">
+          <Chama className="placar-telao-chama" />
+          <div>
+            <div className="placar-telao-titulo">{final ? 'Placar final' : 'Placar'}</div>
+            <div className="placar-telao-sub">
+              {final ? 'Gincana Bíblica' : `Rodada ${estado.rodada} · ${estado.contador} ${estado.contador === 1 ? 'pergunta' : 'perguntas'}`}
+            </div>
+          </div>
+        </div>
+        <ol className="placar-telao-lista">
+          {linhas.map(({ indice, pontos, posicao }, i) => {
+            const eq = EQUIPES[indice]
+            const lider = posicao === 1 && pontos > 0
+            return (
+              <li
+                key={eq.nome}
+                className={`placar-telao-linha ${lider ? 'lider' : ''}`}
+                style={{ '--cor-equipe': eq.cor, '--texto-equipe': eq.texto, '--atraso': `${0.15 + i * 0.12}s`, '--largura': `${Math.max(4, (pontos / maximo) * 100)}%` } as CSSProperties}
+              >
+                <span className="placar-telao-posicao">{posicao}º</span>
+                <span className="placar-telao-nome">{eq.nome}</span>
+                <span className="placar-telao-barra">
+                  <span />
+                </span>
+                <span className="placar-telao-pontos">
+                  {lider && '🏆 '}
+                  {pontos}
+                </span>
+              </li>
+            )
+          })}
+        </ol>
+        <Logo className="placar-telao-logo" />
+      </div>
     </div>
   )
 }

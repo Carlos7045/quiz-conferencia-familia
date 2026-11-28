@@ -14,6 +14,7 @@ import {
   PERGUNTAS,
   acertou,
   alternarPausaCronometro,
+  alternarPlacarTelao,
   buscarPergunta,
   congelar,
   escolherEquipe,
@@ -21,6 +22,7 @@ import {
   estadoInicial,
   marcar,
   mostrarPergunta,
+  podeMostrarPlacar,
   podeSortear,
   proximaRodada,
   pular,
@@ -136,6 +138,9 @@ export function Controle() {
     },
     pausarTempo() {
       atualizar(alternarPausaCronometro(estadoRef.current))
+    },
+    alternarPlacar() {
+      atualizar(alternarPlacarTelao(estadoRef.current))
     },
     escolherEquipe(indice: number) {
       aplicar(escolherEquipe(estadoRef.current, indice))
@@ -273,6 +278,7 @@ export function Controle() {
       else if (k === ' ' || k === 'arrowright') acoes.proximaOpcao()
       else if (posicao >= 0) acoes.marcar(posicao)
       else if (k === 'r') acoes.revelarCorreta()
+      else if (k === 't') acoes.alternarPlacar()
       else if (k === 'p') pausar()
       else if (k === 'backspace' || (ev.ctrlKey && k === 'z')) desfazer()
       else if (k === 'escape' && telaUnica) sairTelaUnica()
@@ -377,7 +383,9 @@ function Placar({ estado, onEscolher }: { estado: EstadoJogo; onEscolher: (i: nu
     <div className="placar">
       <div className="placar-titulo">
         <strong>Placar</strong>
-        <span>só aparece aqui no controle · clique numa equipe para mudar a vez</span>
+        <span>
+          {estado.placarNoTelao ? '🏆 aparecendo no telão agora' : 'só aparece aqui no controle'} · clique numa equipe para mudar a vez
+        </span>
       </div>
       <div className="placar-equipes">
         {EQUIPES.map((eq, i) => {
@@ -486,6 +494,7 @@ interface BotoesProps {
     proximaOpcao: () => void
     revelarCorreta: () => void
     pular: () => void
+    alternarPlacar: () => void
   }
   onPausar: () => void
   onDesfazer: () => void
@@ -533,6 +542,14 @@ function BotoesAcao({ estado, automatico, pausado, podeDesfazer, acoes, onPausar
           ⤼ Pular pergunta
         </button>
       )}
+      <button
+        className={estado.placarNoTelao ? 'ativo' : ''}
+        disabled={!estado.placarNoTelao && !podeMostrarPlacar(estado)}
+        onClick={acoes.alternarPlacar}
+        title={podeMostrarPlacar(estado) ? 'Mostra ou esconde o placar no telão' : 'Disponível depois que a equipe responder'}
+      >
+        {estado.placarNoTelao ? '✕ Esconder placar do telão' : '🏆 Placar no telão'} <kbd>T</kbd>
+      </button>
       <button disabled={!podeDesfazer} onClick={onDesfazer}>
         ↶ Desfazer <kbd>Backspace</kbd>
       </button>
@@ -572,6 +589,7 @@ function Atalhos() {
         <li><kbd>Espaço</kbd> ou <kbd>→</kbd> próxima opção</li>
         <li><kbd>A</kbd>–<kbd>D</kbd> ou <kbd>1</kbd>–<kbd>4</kbd> marcar a resposta</li>
         <li><kbd>P</kbd> pausar/retomar o tempo (ou o modo automático)</li>
+        <li><kbd>T</kbd> mostrar/esconder o placar no telão (entre as perguntas)</li>
         <li><kbd>R</kbd> mostrar resposta certa (quando ficou para a próxima rodada)</li>
         <li><kbd>Backspace</kbd> ou <kbd>Ctrl+Z</kbd> desfazer (desfaz pontos também)</li>
         <li><kbd>Esc</kbd> sair da tela única</li>

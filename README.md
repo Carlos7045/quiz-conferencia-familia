@@ -14,7 +14,7 @@ Clique em **⛶ Tela única**. A tela do público ocupa a tela inteira. Os botõ
 
 ### Equipes, pontos e tempo
 - São 4 equipes que se revezam nesta ordem: **Verde → Amarela → Azul → Vermelha**. A equipe da vez aparece no telão (faixa colorida no topo e etiqueta "Equipe ...").
-- Cada acerto soma os pontos configurados (padrão: 10). O **placar aparece só no painel de controle**, nunca no telão.
+- Cada acerto soma os pontos configurados (padrão: 10). O placar fica no painel de controle e só vai para o telão quando vocês quiserem: botão **🏆 Placar no telão** ou tecla `T`. Ele aparece em tela cheia, com as equipes em ordem de pontos, e some sozinho ao sortear a próxima pergunta. Com uma pergunta em andamento o botão fica bloqueado, para não cobrir a pergunta nem o tempo.
 - Para mudar a vez, clique na equipe no placar. Durante uma pergunta, isso passa a pergunta para essa equipe; entre perguntas, define quem recebe a próxima.
 - Quando a última opção aparece, começa a **contagem regressiva** (padrão: 30 s), com som de suspense e bipes nos 5 últimos segundos. Se o tempo acabar, a equipe não pontua e vale a mesma regra de quando ela erra.
 - "Pular pergunta" devolve a pergunta para a fila, e a mesma equipe recebe outra.
@@ -28,6 +28,7 @@ Clique em **⛶ Tela única**. A tela do público ocupa a tela inteira. Os botõ
 | Marcar a resposta da pessoa | clicar na opção | `A`–`D` ou `1`–`4` |
 | Mostrar a certa (quando a pergunta ficou para a próxima rodada) | Mostrar resposta certa | `R` |
 | Pausar/retomar o tempo (ou o modo automático) | Pausar tempo | `P` |
+| Mostrar/esconder o placar no telão | Placar no telão | `T` |
 | Desfazer o último passo (ex.: clicou errado) | Desfazer | `Backspace` ou `Ctrl+Z` |
 
 O progresso fica salvo no navegador. Se a página fechar ou recarregar, o jogo continua de onde parou. Para começar do zero, use **Configurações → Reiniciar jogo**.

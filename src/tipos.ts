@@ -49,6 +49,8 @@ export interface EstadoJogo {
   /** Pontos de cada equipe (mesma ordem de EQUIPES) */
   placar: number[]
   cronometro: Cronometro | null
+  /** Placar aparecendo no telão (o operador liga e desliga) */
+  placarNoTelao: boolean
 }
 
 export interface Config {

@@ -530,6 +530,7 @@ kbd {
 }
 .botao-tela-cheia {
   position: fixed;
+  z-index: 50;
   bottom: 16px;
   right: 16px;
   background: var(--grafite);
@@ -547,6 +548,7 @@ kbd {
 /* tela única: barra de controle que some quando o mouse fica parado */
 .barra-flutuante {
   position: fixed;
+  z-index: 50;
   left: 50%;
   bottom: 14px;
   transform: translateX(-50%);
@@ -1300,4 +1302,139 @@ kbd {
     opacity: 1;
     transform: translate(-50%, -50%);
   }
+}
+
+/* ===================== PLACAR NO TELÃO ===================== */
+
+.placar-telao {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  animation: surgir 0.5s ease-out;
+}
+.placar-telao-conteudo {
+  position: relative;
+  z-index: 1;
+  margin: auto;
+  width: 88%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3.5cqh;
+}
+.placar-telao-topo {
+  display: flex;
+  align-items: center;
+  gap: 2cqw;
+}
+.placar-telao-chama {
+  height: 14cqh;
+  animation: tremular 2.4s ease-in-out infinite;
+  transform-origin: 50% 100%;
+}
+.placar-telao-titulo {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: min(15cqh, 9cqw);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--terracota);
+}
+.placar-telao-sub {
+  margin-top: 1cqh;
+  font-weight: 800;
+  font-size: min(3.4cqh, 2cqw);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #9c4a32;
+}
+.placar-telao-lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2cqh;
+}
+.placar-telao-linha {
+  display: grid;
+  grid-template-columns: 9cqh 22cqw 1fr 18cqw;
+  align-items: center;
+  gap: 1.6cqw;
+  height: 11cqh;
+  padding: 0 2cqw 0 1cqw;
+  border-radius: 999px;
+  background: #fffaf7e6;
+  border: 2px solid #ecc2b0;
+  box-shadow: 0 0.6cqh 2cqh #c25f4226;
+  animation: entrar-opcao 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.2) var(--atraso) both;
+}
+.placar-telao-linha.lider {
+  border: 0.5cqh solid var(--cor-equipe);
+  box-shadow: 0 1cqh 4cqh #41222a40;
+}
+.placar-telao-posicao {
+  font-weight: 800;
+  font-size: 5cqh;
+  text-align: center;
+  color: var(--marrom);
+}
+.placar-telao-nome {
+  justify-self: start;
+  font-weight: 800;
+  font-size: min(4.8cqh, 2.8cqw);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: var(--cor-equipe);
+  color: var(--texto-equipe);
+  padding: 0.25em 1em;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.placar-telao-barra {
+  height: 3.2cqh;
+  border-radius: 999px;
+  background: #ecc2b055;
+  overflow: hidden;
+}
+.placar-telao-barra span {
+  display: block;
+  height: 100%;
+  width: var(--largura);
+  border-radius: inherit;
+  background: var(--cor-equipe);
+  transform-origin: left;
+  animation: crescer-barra 1s cubic-bezier(0.2, 0.8, 0.2, 1) calc(var(--atraso) + 0.3s) both;
+}
+.placar-telao-pontos {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 8.5cqh;
+  text-align: right;
+  color: var(--marrom);
+  white-space: nowrap;
+}
+.placar-telao-logo {
+  font-size: min(5.5cqh, 3.2cqw);
+  margin-top: 1cqh;
+}
+
+@keyframes crescer-barra {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* botão ligado (placar aparecendo no telão) */
+button.ativo,
+button.ativo:hover:not(:disabled) {
+  background: var(--grafite);
+  color: var(--creme);
+  border-color: transparent;
 }
