@@ -1,1 +1,1 @@
-﻿Sons do sistema (mp3, nomes exatos): abertura.mp3 (musica de fundo antes de comecar), pergunta.mp3 (vinheta da proxima pergunta), suspense.mp3 (contagem regressiva), e opcionais opcao.mp3, acerto.mp3, erro.mp3, tempo.mp3.
+﻿Sons do sistema (mp3, nomes exatos): abertura.mp3 (musica antes de comecar), pergunta.mp3 (vinheta da proxima pergunta), fundo-opcoes.mp3 (fundo enquanto as opcoes aparecem), opcao.mp3 (efeito de cada opcao), suspense.mp3 (contagem regressiva), acerto.mp3, erro.mp3 e tempo.mp3 (opcional).

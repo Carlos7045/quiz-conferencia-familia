@@ -49,8 +49,10 @@ Os mp3 ficam em `public/sons/`, com estes nomes exatos (minúsculas, sem acento)
 |---|---|
 | `abertura.mp3` | Música de fundo, em repetição, enquanto as perguntas não começam. Para com fade ao clicar em "Próxima pergunta" e volta ao reiniciar o jogo |
 | `pergunta.mp3` | Vinheta ao clicar em "Próxima pergunta". O telão mostra "Equipe X · Preparem-se!" e a pergunta aparece depois de 3 s (ajustável em Configurações → Vinheta da pergunta) |
+| `fundo-opcoes.mp3` | Música de fundo, em repetição, a partir da 1ª opção. Para quando começa a contagem (ou ao responder, se a contagem estiver desligada). Toca a 60% do volume, para o efeito de cada opção aparecer por cima |
+| `opcao.mp3` | Efeito de cada opção aparecendo. Se clicarem rápido, o efeito anterior é cortado |
 | `suspense.mp3` | Em repetição durante a contagem regressiva. Para ao responder ou quando o tempo acaba |
-| `opcao.mp3`, `acerto.mp3`, `erro.mp3`, `tempo.mp3` | Opcionais. Sem eles, o sistema usa sons próprios |
+| `acerto.mp3`, `erro.mp3`, `tempo.mp3` | Opcionais. Sem eles, o sistema usa sons próprios |
 
 O navegador só libera som depois do primeiro clique ou tecla na página. Se a música de abertura não começar sozinha, aparece um aviso no painel: basta clicar em qualquer lugar ou no botão "Tocar música".
 ## Atualizar as perguntas

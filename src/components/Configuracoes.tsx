@@ -1,4 +1,13 @@
-import { iniciarSuspense, pararMusica, pararSuspense, tocar, tocarMusica, type NomeSom } from '../sons'
+import {
+  iniciarFundoOpcoes,
+  iniciarSuspense,
+  pararFundoOpcoes,
+  pararMusica,
+  pararSuspense,
+  tocar,
+  tocarMusica,
+  type NomeSom,
+} from '../sons'
 import type { Config } from '../tipos'
 
 interface Props {
@@ -173,10 +182,14 @@ export function Configuracoes({ config, onMudar, onFechar, onReiniciar }: Props)
             <button onClick={() => void tocarMusica()} disabled={!config.somAtivo}>
               🔊 Música de abertura
             </button>
+            <button onClick={iniciarFundoOpcoes} disabled={!config.somAtivo}>
+              🔊 Fundo das opções
+            </button>
             <button
               onClick={() => {
                 pararSuspense()
                 pararMusica(200)
+                pararFundoOpcoes(200)
               }}
             >
               ⏹ Parar

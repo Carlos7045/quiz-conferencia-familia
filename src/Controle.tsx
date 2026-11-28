@@ -32,7 +32,9 @@ import {
 import {
   carregarArquivos,
   configurarSom,
+  iniciarFundoOpcoes,
   iniciarSuspense,
+  pararFundoOpcoes,
   pararMusica,
   pararSons,
   pararSuspense,
@@ -194,6 +196,21 @@ export function Controle() {
       remover()
     }
   }, [deveTocarMusica])
+
+  // ---------- fundo musical enquanto as opções aparecem ----------
+  // Começa na 1ª opção e para quando a contagem começa (aí entra o suspense) ou quando respondem.
+  const fundoOpcoes =
+    config.somAtivo &&
+    estado.fase === 'pergunta' &&
+    !estado.vinheta &&
+    estado.resultado === null &&
+    estado.opcoesVisiveis > 0 &&
+    estado.cronometro === null
+  useEffect(() => {
+    if (!fundoOpcoes) return
+    iniciarFundoOpcoes()
+    return () => pararFundoOpcoes()
+  }, [fundoOpcoes, estado.contador])
 
   // ---------- vinheta: a pergunta aparece depois de alguns segundos ----------
   useEffect(() => {

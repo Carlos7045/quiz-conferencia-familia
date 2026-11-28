@@ -4,6 +4,7 @@
  * Arquivos mp3 em `public/sons/` (todos opcionais):
  * - abertura.mp3: música de fundo, em repetição, enquanto as perguntas não começam
  * - pergunta.mp3: vinheta ao clicar em "Próxima pergunta" (a pergunta aparece logo depois)
+ * - fundo-opcoes.mp3: música de fundo, em repetição, enquanto as opções vão aparecendo
  * - opcao.mp3, acerto.mp3, erro.mp3, tempo.mp3
  * - suspense.mp3: em repetição durante a contagem regressiva
  * Sem o arquivo, o som é gerado pelo navegador (Web Audio). A abertura não tem som gerado.
@@ -19,6 +20,8 @@ const arquivos = new Map<NomeSom | 'suspense', HTMLAudioElement>()
 
 /** Som "principal" em andamento (abertura, acerto, erro), para poder interromper. */
 let principal: { parar: () => void } | null = null
+/** Último efeito de opção, para não acumular quando clicam rápido. */
+let efeitoOpcao: { parar: () => void } | null = null
 
 function contexto() {
   ctx ??= new AudioContext()
@@ -40,6 +43,47 @@ export function configurarSom(opcoes: { ativo: boolean; volume: number }) {
   ativo = opcoes.ativo
   volume = opcoes.volume
   if (musica && !musica.paused && !emFade) musica.volume = volume
+  if (fundo && !fundo.paused) fundo.volume = volume * VOLUME_FUNDO
+}
+
+// ---------- fundo musical enquanto as opções aparecem ----------
+
+/** O fundo fica um pouco mais baixo, para o efeito de cada opção aparecer por cima. */
+const VOLUME_FUNDO = 0.6
+let fundo: HTMLAudioElement | null = null
+let fadeFundo: ReturnType<typeof setInterval> | undefined
+
+export function iniciarFundoOpcoes() {
+  if (!ativo || volume <= 0) return
+  clearInterval(fadeFundo)
+  if (!fundo) {
+    fundo = new Audio('/sons/fundo-opcoes.mp3')
+    fundo.loop = true
+    fundo.preload = 'auto'
+  }
+  fundo.volume = volume * VOLUME_FUNDO
+  if (fundo.paused) {
+    fundo.currentTime = 0
+    void fundo.play().catch(() => {})
+  }
+}
+
+/** Abaixa o fundo rapidinho e para. */
+export function pararFundoOpcoes(fadeMs = 400) {
+  const f = fundo
+  if (!f || f.paused) return
+  clearInterval(fadeFundo)
+  const passos = Math.max(1, Math.round(fadeMs / 40))
+  const inicial = f.volume
+  let i = 0
+  fadeFundo = setInterval(() => {
+    i++
+    f.volume = Math.max(0, inicial * (1 - i / passos))
+    if (i >= passos) {
+      clearInterval(fadeFundo)
+      f.pause()
+    }
+  }, 40)
 }
 
 // ---------- música de abertura (fundo, em repetição) ----------
@@ -207,6 +251,10 @@ export function tocar(nome: NomeSom) {
     controle = { parar: () => saida.disconnect() }
   }
   if (nome !== 'opcao') principal = controle
+  else {
+    efeitoOpcao?.parar()
+    efeitoOpcao = controle
+  }
 }
 
 // ---------- sons gerados ----------
