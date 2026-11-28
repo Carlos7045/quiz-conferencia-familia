@@ -14,7 +14,7 @@ interface Props {
 
 /** Tela exibida para o público. Usa unidades de container, então funciona em qualquer tamanho. */
 export function Tela({ estado, config, onEscolher }: Props) {
-  const emPergunta = estado.fase === 'pergunta'
+  const emPergunta = estado.fase === 'pergunta' && !estado.vinheta
   const equipe = EQUIPES[estado.equipe]
   const estilo = { '--cor-equipe': equipe.cor, '--texto-equipe': equipe.texto } as CSSProperties
   return (
@@ -93,6 +93,22 @@ function Conteudo({ estado, config, onEscolher }: Props) {
       <Aviso chamada="Fim das perguntas!">
         <div className="aviso-faixa">Obrigado a todos pela participação</div>
       </Aviso>
+    )
+  }
+
+  if (estado.vinheta) {
+    const equipe = EQUIPES[estado.equipe]
+    return (
+      <div className="tela-chamada" key={estado.contador}>
+        <Chama className="chamada-chama" />
+        <div className="chamada-numero">
+          Rodada {estado.rodada} · Pergunta {estado.contador}
+        </div>
+        <div className="chamada-equipe">
+          <span>Equipe</span> {equipe.nome}
+        </div>
+        <div className="chamada-dica">Preparem-se!</div>
+      </div>
     )
   }
 

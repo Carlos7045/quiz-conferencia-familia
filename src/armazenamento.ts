@@ -7,6 +7,7 @@ export const CONFIG_PADRAO: Config = {
   segundosEntreOpcoes: 3,
   aoErrar: 'mostrarCorreta',
   embaralharOpcoes: true,
+  segundosVinheta: 3,
   pontosPorPergunta: 10,
   cronometroAtivo: true,
   segundosResposta: 30,

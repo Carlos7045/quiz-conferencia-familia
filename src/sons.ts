@@ -1,15 +1,16 @@
 /**
  * Sons do quiz.
  *
- * Por padrão os sons são gerados pelo navegador (Web Audio), sem arquivos.
- * Para usar seus próprios sons, coloque arquivos mp3 em `public/sons/` com
- * estes nomes: abertura.mp3, opcao.mp3, acerto.mp3, erro.mp3, tempo.mp3 e suspense.mp3
- * (o suspense toca em repetição durante a contagem regressiva).
- * Se o arquivo existir, ele é usado no lugar do som gerado.
+ * Arquivos mp3 em `public/sons/` (todos opcionais):
+ * - abertura.mp3: música de fundo, em repetição, enquanto as perguntas não começam
+ * - pergunta.mp3: vinheta ao clicar em "Próxima pergunta" (a pergunta aparece logo depois)
+ * - opcao.mp3, acerto.mp3, erro.mp3, tempo.mp3
+ * - suspense.mp3: em repetição durante a contagem regressiva
+ * Sem o arquivo, o som é gerado pelo navegador (Web Audio). A abertura não tem som gerado.
  */
-export type NomeSom = 'abertura' | 'opcao' | 'acerto' | 'erro' | 'tempo'
+export type NomeSom = 'pergunta' | 'opcao' | 'acerto' | 'erro' | 'tempo'
 
-const NOMES: (NomeSom | 'suspense')[] = ['abertura', 'opcao', 'acerto', 'erro', 'tempo', 'suspense']
+const NOMES: (NomeSom | 'suspense')[] = ['pergunta', 'opcao', 'acerto', 'erro', 'tempo', 'suspense']
 
 let ctx: AudioContext | null = null
 let volume = 0.7
@@ -38,6 +39,60 @@ export function carregarArquivos() {
 export function configurarSom(opcoes: { ativo: boolean; volume: number }) {
   ativo = opcoes.ativo
   volume = opcoes.volume
+  if (musica && !musica.paused && !emFade) musica.volume = volume
+}
+
+// ---------- música de abertura (fundo, em repetição) ----------
+
+export type StatusMusica = 'tocando' | 'bloqueada' | 'indisponivel' | 'parada'
+
+let musica: HTMLAudioElement | null = null
+let fadeTimer: ReturnType<typeof setInterval> | undefined
+let emFade = false
+
+/**
+ * Começa (ou continua) a música de abertura. O navegador só deixa tocar som depois
+ * de um clique ou tecla na página; nesse caso devolve 'bloqueada'.
+ */
+export async function tocarMusica(): Promise<StatusMusica> {
+  if (!ativo || volume <= 0) return 'parada'
+  clearInterval(fadeTimer)
+  emFade = false
+  if (!musica) {
+    musica = new Audio('/sons/abertura.mp3')
+    musica.loop = true
+    musica.preload = 'auto'
+  }
+  musica.volume = volume
+  if (!musica.paused) return 'tocando'
+  try {
+    await musica.play()
+    return 'tocando'
+  } catch (e) {
+    return (e as DOMException).name === 'NotAllowedError' ? 'bloqueada' : 'indisponivel'
+  }
+}
+
+/** Abaixa a música aos poucos e para (volta ao início para a próxima vez). */
+export function pararMusica(fadeMs = 800) {
+  const m = musica
+  if (!m || m.paused) return
+  clearInterval(fadeTimer)
+  emFade = true
+  const passos = Math.max(1, Math.round(fadeMs / 50))
+  const inicial = m.volume
+  let i = 0
+  fadeTimer = setInterval(() => {
+    i++
+    m.volume = Math.max(0, inicial * (1 - i / passos))
+    if (i >= passos) {
+      clearInterval(fadeTimer)
+      emFade = false
+      m.pause()
+      m.currentTime = 0
+      m.volume = volume
+    }
+  }, 50)
 }
 
 export function pararSons() {
@@ -180,7 +235,7 @@ function nota(
 
 const sintetizar: Record<NomeSom, (ac: AudioContext, saida: AudioNode) => void> = {
   // Vinheta curta e ascendente, estilo programa de perguntas
-  abertura(ac, saida) {
+  pergunta(ac, saida) {
     const melodia: [number, number, number][] = [
       [392.0, 0.0, 0.18], // Sol
       [523.25, 0.18, 0.18], // Dó

@@ -1,4 +1,4 @@
-import { iniciarSuspense, pararSuspense, tocar, type NomeSom } from '../sons'
+import { iniciarSuspense, pararMusica, pararSuspense, tocar, tocarMusica, type NomeSom } from '../sons'
 import type { Config } from '../tipos'
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
 }
 
 const SONS: [NomeSom, string][] = [
-  ['abertura', 'Abertura'],
+  ['pergunta', 'Próxima pergunta'],
   ['opcao', 'Opção'],
   ['acerto', 'Acerto'],
   ['erro', 'Erro'],
@@ -27,6 +27,25 @@ export function Configuracoes({ config, onMudar, onFechar, onReiniciar }: Props)
           <h2>⚙️ Configurações</h2>
           <button onClick={onFechar}>✕</button>
         </header>
+
+        <fieldset>
+          <legend>Vinheta da pergunta</legend>
+          <label>
+            Ao clicar em "Próxima pergunta", tocar a vinheta e mostrar a pergunta depois de
+            <span className="numero-segundos">
+              <input
+                type="number"
+                min={0}
+                max={30}
+                value={config.segundosVinheta}
+                onChange={(e) =>
+                  mudar('segundosVinheta', Math.min(30, Math.max(0, Math.round(Number(e.target.value)) || 0)))
+                }
+              />
+              s
+            </span>
+          </label>
+        </fieldset>
 
         <fieldset>
           <legend>Como as opções aparecem</legend>
@@ -151,7 +170,17 @@ export function Configuracoes({ config, onMudar, onFechar, onReiniciar }: Props)
             <button onClick={() => iniciarSuspense(5000)} disabled={!config.somAtivo}>
               🔊 Suspense
             </button>
-            <button onClick={pararSuspense}>⏹ Parar</button>
+            <button onClick={() => void tocarMusica()} disabled={!config.somAtivo}>
+              🔊 Música de abertura
+            </button>
+            <button
+              onClick={() => {
+                pararSuspense()
+                pararMusica(200)
+              }}
+            >
+              ⏹ Parar
+            </button>
           </div>
         </fieldset>
 

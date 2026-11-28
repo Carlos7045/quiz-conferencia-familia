@@ -34,6 +34,7 @@ export function estadoInicial(): EstadoJogo {
     atual: null,
     ordem: [],
     opcoesVisiveis: 0,
+    vinheta: false,
     escolhida: null,
     resultado: null,
     mostrarCorreta: false,
@@ -52,7 +53,8 @@ export function normalizarEstado(e: Partial<EstadoJogo>): EstadoJogo {
     const p = buscarPergunta(estado.atual)
     estado.resultado = estado.escolhida == null ? null : estado.escolhida === p?.correta ? 'acerto' : 'erro'
   }
-  return { ...estado, cronometro: congelar(estado.cronometro) }
+  // vinheta interrompida (página recarregada): mostra a pergunta direto
+  return { ...estado, vinheta: false, cronometro: congelar(estado.cronometro) }
 }
 
 // ---------- consultas ----------
@@ -100,6 +102,7 @@ export function sortear(e: EstadoJogo, config: Config): EstadoJogo {
     atual: id,
     ordem: config.embaralharOpcoes ? embaralhar(indices) : indices,
     opcoesVisiveis: 0,
+    vinheta: config.segundosVinheta > 0,
     escolhida: null,
     resultado: null,
     mostrarCorreta: false,
@@ -113,8 +116,13 @@ export function proximaRodada(e: EstadoJogo): EstadoJogo {
   return { ...e, fase: 'inicio', rodada: e.rodada + 1, fila: embaralhar(e.adiadas), adiadas: [], atual: null }
 }
 
+/** Fim da vinheta: a pergunta aparece no telão. */
+export function mostrarPergunta(e: EstadoJogo): EstadoJogo {
+  return e.fase === 'pergunta' && e.vinheta ? { ...e, vinheta: false } : e
+}
+
 export function revelarOpcao(e: EstadoJogo, config: Config, agora = Date.now()): EstadoJogo {
-  if (e.fase !== 'pergunta' || e.resultado !== null || e.opcoesVisiveis >= e.ordem.length) return e
+  if (e.fase !== 'pergunta' || e.vinheta || e.resultado !== null || e.opcoesVisiveis >= e.ordem.length) return e
   const opcoesVisiveis = e.opcoesVisiveis + 1
   const ultima = opcoesVisiveis === e.ordem.length
   const totalMs = config.segundosResposta * 1000
@@ -142,7 +150,7 @@ function encerrar(e: EstadoJogo, resultado: 'acerto' | 'erro' | 'tempo', config:
 
 /** Marca a opção que está na posição `posicao` da tela (0 = A). */
 export function marcar(e: EstadoJogo, posicao: number, config: Config): EstadoJogo {
-  if (e.fase !== 'pergunta' || e.resultado !== null || posicao >= e.opcoesVisiveis) return e
+  if (e.fase !== 'pergunta' || e.vinheta || e.resultado !== null || posicao >= e.opcoesVisiveis) return e
   const pergunta = buscarPergunta(e.atual)!
   const escolhida = e.ordem[posicao]
   const novo = encerrar(e, escolhida === pergunta.correta ? 'acerto' : 'erro', config)

@@ -35,6 +35,8 @@ export interface EstadoJogo {
   /** Ordem de exibição: ordem[posição na tela] = índice original da opção */
   ordem: number[]
   opcoesVisiveis: number
+  /** Tocando a vinheta: o telão mostra a chamada da equipe e a pergunta aparece em seguida */
+  vinheta: boolean
   /** Índice original da opção marcada, ou null */
   escolhida: number | null
   resultado: Resultado
@@ -57,6 +59,8 @@ export interface Config {
   segundosEntreOpcoes: number
   aoErrar: 'mostrarCorreta' | 'proximaRodada'
   embaralharOpcoes: boolean
+  /** Quanto tempo a vinheta toca antes de a pergunta aparecer (0 = aparece na hora) */
+  segundosVinheta: number
   pontosPorPergunta: number
   /** Contagem regressiva depois que a última opção aparece */
   cronometroAtivo: boolean

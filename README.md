@@ -42,18 +42,17 @@ O progresso fica salvo no navegador. Se a página fechar ou recarregar, o jogo c
 ## Identidade visual
 Segue o cartaz do evento: fundo pêssego, terracota e grafite, e a logo "II Conferência Da Família" com a chama, recriada em vetor (`src/components/Logo.tsx`). As fontes vão junto com o site, então não dependem de internet: Antonio (título), Corinthia ("Da Família") e Montserrat (textos). Os textos do evento ficam em `src/components/Logo.tsx` e as cores no início de `src/estilos.css`.
 
-## Sons personalizados
-Por padrão os sons são gerados pelo próprio navegador. Para usar seus próprios sons, coloque arquivos mp3 em `public/sons/` com estes nomes:
+## Sons
+Os mp3 ficam em `public/sons/`, com estes nomes exatos (minúsculas, sem acento):
 
-- `abertura.mp3`: música quando a pergunta aparece
-- `opcao.mp3`: quando cada opção aparece
-- `acerto.mp3`
-- `erro.mp3`
-- `tempo.mp3`: quando o tempo acaba
-- `suspense.mp3`: toca em repetição durante a contagem regressiva
+| Arquivo | Quando toca |
+|---|---|
+| `abertura.mp3` | Música de fundo, em repetição, enquanto as perguntas não começam. Para com fade ao clicar em "Próxima pergunta" e volta ao reiniciar o jogo |
+| `pergunta.mp3` | Vinheta ao clicar em "Próxima pergunta". O telão mostra "Equipe X · Preparem-se!" e a pergunta aparece depois de 3 s (ajustável em Configurações → Vinheta da pergunta) |
+| `suspense.mp3` | Em repetição durante a contagem regressiva. Para ao responder ou quando o tempo acaba |
+| `opcao.mp3`, `acerto.mp3`, `erro.mp3`, `tempo.mp3` | Opcionais. Sem eles, o sistema usa sons próprios |
 
-Pode colocar só alguns. Os que faltarem continuam com o som gerado.
-
+O navegador só libera som depois do primeiro clique ou tecla na página. Se a música de abertura não começar sozinha, aparece um aviso no painel: basta clicar em qualquer lugar ou no botão "Tocar música".
 ## Atualizar as perguntas
 Substitua o PDF na raiz (mantendo o mesmo formato) e rode:
 

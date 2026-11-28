@@ -20,6 +20,7 @@ import {
   esgotarTempo,
   estadoInicial,
   marcar,
+  mostrarPergunta,
   podeSortear,
   proximaRodada,
   pular,
@@ -32,10 +33,13 @@ import {
   carregarArquivos,
   configurarSom,
   iniciarSuspense,
+  pararMusica,
   pararSons,
   pararSuspense,
   tocar,
+  tocarMusica,
   type NomeSom,
+  type StatusMusica,
 } from './sons'
 import type { EstadoJogo } from './tipos'
 import { useInativo } from './useInativo'
@@ -51,6 +55,7 @@ export function Controle() {
   const [abrirConfig, setAbrirConfig] = useState(false)
   const [pausado, setPausado] = useState(false)
   const [telaoConectado, setTelaoConectado] = useState(false)
+  const [statusMusica, setStatusMusica] = useState<StatusMusica>('parada')
 
   const estadoRef = useRef(estado)
   const configRef = useRef(config)
@@ -115,7 +120,7 @@ export function Controle() {
       if (e.fase !== 'fimRodada' && !podeSortear(e)) return
       const base = e.fase === 'fimRodada' ? proximaRodada(e) : e
       const novo = sortear(base, cfg)
-      aplicar(novo, novo.fase === 'pergunta' ? 'abertura' : undefined)
+      aplicar(novo, novo.fase === 'pergunta' ? 'pergunta' : undefined)
     },
     proximaOpcao() {
       aplicar(revelarOpcao(estadoRef.current, configRef.current), 'opcao')
@@ -161,10 +166,46 @@ export function Controle() {
     setPodeDesfazer(false)
   }
 
+  // ---------- música de abertura (antes de começar as perguntas) ----------
+  const deveTocarMusica = config.somAtivo && estado.fase === 'inicio' && estado.rodada === 1 && estado.contador === 0
+  useEffect(() => {
+    if (!deveTocarMusica) {
+      pararMusica()
+      setStatusMusica('parada')
+      return
+    }
+    let ativo = true
+    const tentar = () =>
+      void tocarMusica().then((s) => {
+        if (!ativo) return
+        setStatusMusica(s)
+        if (s === 'tocando') remover()
+      })
+    // O navegador só libera o som depois do primeiro clique ou tecla na página.
+    const remover = () => {
+      window.removeEventListener('pointerdown', tentar)
+      window.removeEventListener('keydown', tentar)
+    }
+    window.addEventListener('pointerdown', tentar)
+    window.addEventListener('keydown', tentar)
+    tentar()
+    return () => {
+      ativo = false
+      remover()
+    }
+  }, [deveTocarMusica])
+
+  // ---------- vinheta: a pergunta aparece depois de alguns segundos ----------
+  useEffect(() => {
+    if (!estado.vinheta) return
+    const t = setTimeout(() => atualizar(mostrarPergunta(estadoRef.current)), config.segundosVinheta * 1000)
+    return () => clearTimeout(t)
+  }, [estado.vinheta, estado.contador, config.segundosVinheta, atualizar])
+
   // ---------- modo automático ----------
   useEffect(() => {
     if (config.modoOpcoes !== 'automatico' || pausado) return
-    if (estado.fase !== 'pergunta' || estado.resultado !== null) return
+    if (estado.fase !== 'pergunta' || estado.vinheta || estado.resultado !== null) return
     if (estado.opcoesVisiveis >= estado.ordem.length) return
     const segundos = estado.opcoesVisiveis === 0 ? config.segundosLeitura : config.segundosEntreOpcoes
     const t = setTimeout(acoes.proximaOpcao, segundos * 1000)
@@ -280,6 +321,14 @@ export function Controle() {
 
       <div className="painel-corpo">
         <section className="painel-operador">
+          {statusMusica === 'bloqueada' && (
+            <div className="aviso-musica">
+              🔇 O navegador bloqueou a música de abertura até o primeiro clique.
+              <button className="primario" onClick={() => void tocarMusica().then(setStatusMusica)}>
+                ▶ Tocar música
+              </button>
+            </div>
+          )}
           <VisaoOperador estado={estado} pontos={config.pontosPorPergunta} onMarcar={acoes.marcar} />
           {botoes}
         </section>
@@ -428,7 +477,7 @@ interface BotoesProps {
 function BotoesAcao({ estado, automatico, pausado, podeDesfazer, acoes, onPausar, onDesfazer }: BotoesProps) {
   const emPergunta = estado.fase === 'pergunta'
   const encerrada = respondida(estado)
-  const faltamOpcoes = emPergunta && !encerrada && estado.opcoesVisiveis < estado.ordem.length
+  const faltamOpcoes = emPergunta && !estado.vinheta && !encerrada && estado.opcoesVisiveis < estado.ordem.length
   const contando = emPergunta && !encerrada && estado.cronometro
   const textoProxima =
     estado.fase === 'fimRodada'

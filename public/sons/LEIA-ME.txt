@@ -1,1 +1,1 @@
-﻿Coloque aqui abertura.mp3, opcao.mp3, acerto.mp3 e erro.mp3 para trocar os sons gerados.
+﻿Sons do sistema (mp3, nomes exatos): abertura.mp3 (musica de fundo antes de comecar), pergunta.mp3 (vinheta da proxima pergunta), suspense.mp3 (contagem regressiva), e opcionais opcao.mp3, acerto.mp3, erro.mp3, tempo.mp3.
